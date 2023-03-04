@@ -1,0 +1,48 @@
+
+
+  <div class="gray-bg">
+    <div class="cms-login-wrap">
+
+      <div class="card card-blank">
+        <div class="login-head text-center">
+          <a href="#">
+            <img src="assets/images/Pruvit-CMS-Logo.svg" alt="CMS logo" class="img-fluid" />
+          </a>
+        </div>
+
+        <div class="login-body">
+
+          <div class="form-group icon">
+            <label class="brand-secondary">Email</label>
+            <i class="icon-user"></i>
+            <input type="email" class="form-control" placeholder="Email" [(ngModel)]="loginObj.email">
+          </div>
+
+          <div class="form-group icon">
+            <label class="brand-secondary"> Password </label>
+            <i class="fal fa-lock-alt"></i>
+            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="loginObj.password">
+          </div>
+
+        </div>
+
+        <div class="login-footer">
+          <div class="form-group">
+            <button  class="btn btn-brand" (click)="doLogin()">
+              Login
+              <span class="icon-chevron-right"></span>
+            </button>
+          </div>
+
+        </div>
+
+
+      </div>
+      <!-- END of crad -->
+
+    </div>
+    <!-- END of cms-login-wrap -->
+
+  </div>
+
+

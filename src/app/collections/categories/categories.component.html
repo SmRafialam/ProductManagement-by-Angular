@@ -1,0 +1,812 @@
+<app-sidebar></app-sidebar>
+
+<div class="pruvit-cms">
+
+
+  <aside class="cms-body">
+    <header class="cms-body-header">
+      <div class="inner">
+        <h1 class="cms-body-heading jumbo-small">Collection</h1>
+        <div class="cms-search">
+          <i class="icon-search cms-search-icon"></i>
+          <input type="email" class="form-control cms-search-input" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="Search" />
+        </div>
+      </div>
+    </header>
+    <!-- END of cms-body-header -->
+
+    <section class="cms-body-inner">
+      <article class="container-fluid">
+        <figure class="row">
+          <div class="cms-body-sidenav">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" routerLink="/collections/categories">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/collections/attributes">Attributes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="files.html">Files</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Formula</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="tags.html">Tags</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Metadata</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="text-snippets.html">Text snippets</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="selling-channels.html">Selling channels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Taxes & fees</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="teams.html">Teams</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="FAQ.html">FAQ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="reviews.html">Reviews</a>
+              </li>
+            </ul>
+          </div>
+          <!-- END of cms-body-sidenav -->
+
+          <div class="cms-body-content col-12">
+            <div class="cms-have-nocontent" style="display: none">
+              <svg width="71" height="51" viewBox="0 0 71 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M18.8327 2.1665H68.8327M18.8327 25.4998H68.8327M18.8327 48.8332H68.8327M2.16602 2.1665H2.19935M2.16602 25.4998H2.19935M2.16602 48.8332H2.19935"
+                  stroke="#8F8F8F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+
+              <p>No categories added</p>
+            </div>
+            <div class="cms-body-inner-content accordion expander" id="accordionOne">
+              <div class="expander-inner category">
+                <div class="expander-header" id="headingFour">
+                  <div class="item btn-item">
+                    <div class="inner-cont">
+                      <span class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true">Ketones</span>
+                    </div>
+                    <div class="more d-flex">
+                      <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                        <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                      </div>
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                            data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-target="#deleteModal"
+                            data-toggle="modal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
+                  data-parent="#accordionExample">
+                  <div class="expander-body">
+                    <ul class="list">
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//OS NAT®</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//OS® Unleashed</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//OS® Black Label </a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//OS® PRØ™</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//UP™</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- END of category, expander-inner -->
+
+              <div class="expander-inner category">
+                <div class="expander-header" id="headingFive">
+                  <div class="item btn-item">
+                    <div class="inner-cont">
+                      <span class="btn arrow" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false">Support Products</span>
+                    </div>
+                    <div class="more d-flex">
+                      <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                        <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                      </div>
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                            data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-target="#deleteModal"
+                            data-toggle="modal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                  <div class="expander-body">
+                    <ul class="list">
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//UP™</a>
+                        </div>
+                        <div class="more d-flex">
+                          <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                            <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                          </div>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- END of category, expander-inner -->
+
+              <div class="expander-inner category">
+                <div class="expander-header" id="headingSix">
+                  <div class="item btn-item">
+                    <div class="inner-cont">
+                      <span class="btn arrow" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false">Special Offers</span>
+                    </div>
+                    <div class="more d-flex">
+                      <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                        <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                      </div>
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                            data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-target="#deleteModal"
+                            data-toggle="modal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                  <div class="expander-body">
+                    <ul class="list">
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//UP™</a>
+                        </div>
+                        <div class="more d-flex">
+                          <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                            <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                          </div>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- END of category, expander-inner -->
+
+              <div class="expander-inner category">
+                <div class="expander-header" id="headingSeven">
+                  <div class="item btn-item">
+                    <div class="inner-cont">
+                      <span class="btn arrow" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false">System</span>
+                    </div>
+                    <div class="more d-flex">
+                      <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                        <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                      </div>
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                            data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-target="#deleteModal"
+                            data-toggle="modal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+                  data-parent="#accordionExample">
+                  <div class="expander-body">
+                    <ul class="list">
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">KETO//UP™</a>
+                        </div>
+                        <div class="more d-flex">
+                          <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                            <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                          </div>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- END of category, expander-inner -->
+
+              <div class="expander-inner category">
+                <div class="expander-header">
+                    <div class="item btn-item">
+                      <div class="inner-cont my-1">
+                        Tickets
+                      </div>
+                      <div class="more d-flex">
+                        <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                          <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                        </div>
+                        <div class="dropdown">
+                          <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fal fa-ellipsis-v"></i>
+                          </span>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                              data-toggle="modal">Edit</a>
+                            <a class="dropdown-item" href="#" data-target="#deleteModal"
+                              data-toggle="modal">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <!-- END of category, expander-inner -->
+
+              <div class="expander-inner category">
+                <div class="expander-header" id="headingEight">
+                  <div class="item btn-item">
+                    <div class="inner-cont">
+                      <span class="btn arrow" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false">Apparel & Tools</span>
+                    </div>
+                    <div class="more d-flex">
+                      <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                        <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                      </div>
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                            data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-target="#deleteModal"
+                            data-toggle="modal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
+                  data-parent="#accordionExample">
+                  <div class="expander-body">
+                    <ul class="list">
+                      <li class="item-border">
+                        <div class="expander-inner category">
+                          <div class="expander-header" id="headingNine">
+                            <div class="item btn-item">
+                              <div class="inner-cont">
+                                <span class="btn arrow" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false">Accessories</span>
+                              </div>
+                              <div class="more d-flex">
+                                <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                                  <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                                </div>
+                                <div class="dropdown">
+                                  <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fal fa-ellipsis-v"></i>
+                                  </span>
+                                  <div class="dropdown-menu dropdown-menu-right"
+                                    aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                      data-toggle="modal">Edit</a>
+                                    <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                      data-toggle="modal">Delete</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="collapseNine" class="collapse" aria-labelledby="headingNine"
+                            data-parent="#accordionExample">
+                            <div class="expander-body">
+                              <ul class="list subcategory">
+                                <li class="item">
+                                  <div class="inner-cont">
+                                    <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Bottles</a>
+                                  </div>
+                                  <div class="more d-flex">
+                                    <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                                      <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                                    </div>
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fal fa-ellipsis-v"></i>
+                                      </span>
+                                      <div class="dropdown-menu dropdown-menu-right"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                          data-toggle="modal">Edit</a>
+                                        <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                          data-toggle="modal">Delete</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="item">
+                                  <div class="inner-cont">
+                                    <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Caps</a>
+                                  </div>
+                                  <div class="more d-flex">
+                                    <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                                      <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                                    </div>
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fal fa-ellipsis-v"></i>
+                                      </span>
+                                      <div class="dropdown-menu dropdown-menu-right"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                          data-toggle="modal">Edit</a>
+                                        <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                          data-toggle="modal">Delete</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="item">
+                                  <div class="inner-cont">
+                                    <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Bags & Backpacks</a>
+                                  </div>
+                                  <div class="more d-flex">
+                                    <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                                      <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                                    </div>
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fal fa-ellipsis-v"></i>
+                                      </span>
+                                      <div class="dropdown-menu dropdown-menu-right"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                          data-toggle="modal">Edit</a>
+                                        <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                          data-toggle="modal">Delete</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="item">
+                                  <div class="inner-cont">
+                                    <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Socks</a>
+                                  </div>
+                                  <div class="more d-flex">
+                                    <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                                      <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                                    </div>
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fal fa-ellipsis-v"></i>
+                                      </span>
+                                      <div class="dropdown-menu dropdown-menu-right"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                          data-toggle="modal">Edit</a>
+                                        <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                          data-toggle="modal">Delete</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--<div class="inline-add category-add">
+                                    <div class="add-inner" data-toggle="tooltip" data-placement="top"
+                                      title="New category"></div>
+                                  </div>-->
+                                </li>
+                                <li class="item">
+                                  <div class="inner-cont">
+                                    <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Miscellaneous</a>
+                                  </div>
+                                  <div class="more d-flex">
+                                    <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="" data-original-title="New subcategory">
+                                      <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
+                                    </div>
+                                    <div class="dropdown">
+                                      <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fal fa-ellipsis-v"></i>
+                                      </span>
+                                      <div class="dropdown-menu dropdown-menu-right"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                          data-toggle="modal">Edit</a>
+                                        <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                          data-toggle="modal">Delete</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END of category, expander-inner -->
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Bundles</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Shakers</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Limited Edition</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">MainStay</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">MEN'S//UNISEX</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">WOMEN'S</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">MainStay</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">OUTERWEAR</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item">
+                        <div class="inner-cont">
+                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">THROWBACKS *LAST CHANCE*</a>
+                        </div>
+                        <div class="more d-flex">
+                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+                            <i class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></i>
+                          </span>
+                          <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                              <i class="fal fa-ellipsis-v"></i>
+                            </span>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
+                                data-toggle="modal">Edit</a>
+                              <a class="dropdown-item" href="#" data-target="#deleteModal"
+                                data-toggle="modal">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- END of category, expander-inner -->
+
+
+            </div>
+            <!-- END of cms-body-inner-content, expander -->
+            <div class="alert-wrap">
+              <div class="alert category-create">
+                <div class="alert-message p-small">Categories have been created</div>
+                <div class="alert-close">Undo</div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- END of cms-body-content -->
+        </figure>
+      </article>
+    </section>
+    <!-- END of cms-body-inner -->
+  </aside>
+  <!-- END of cms-body -->
+
+  <button type="button" class="btn btn-add cms-add-btn add-category"></button>
+  <!-- END of cms-add-btn -->
+
+  <div class="hide-search hidden"></div>
+
+  <form class="search-input">
+    <div class="form-group floating">
+      <span class="floating-icon">
+        <i class="icon-expand-screen"></i>
+      </span>
+      <input type="text" class="form-control category" placeholder="New category" />
+    </div>
+  </form>
+  <!-- END of search-input -->
+</div>
+<!-- END of pruvit-cms -->

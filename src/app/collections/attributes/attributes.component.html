@@ -1,0 +1,814 @@
+ <app-sidebar></app-sidebar>
+
+ <div class="pruvit-cms">
+      <aside class="cms-body">
+        <header class="cms-body-header">
+          <div class="inner">
+            <h1 class="cms-body-heading jumbo-small" routerLink="/dashboard" style="cursor: pointer;">Collection</h1>
+            <div class="cms-search">
+              <i class="icon-search cms-search-icon"></i>
+              <input type="email" class="form-control cms-search-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search" />
+            </div>
+          </div>
+        </header>
+        <!-- END of cms-body-header -->
+
+        <section class="cms-body-inner">
+          <article class="container-fluid">
+            <figure class="row">
+              <app-collection-sidebar></app-collection-sidebar>
+              <!-- END of cms-body-sidenav -->
+
+              <div class="cms-body-content col-12">
+                <div class="cms-body-inner-content accordion expander attribute" id="accordionOne">
+                  <div class="expander-inner">
+                    <div class="expander-header" id="headingOne">
+                      <button type="button" class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">Flavor</button>
+                      <span class="counter light">49</span>
+                      <div class="plus">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.5 1V15M1.5 8H15.5" stroke="black" stroke-opacity="0.94" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="more dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editAttributesModal" data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionTwo">
+                      <div class="expander-body">
+                        <div class="form-group new-choice">
+                          <span class="form-minus">
+                            <i class="fal fa-plus"></i>
+                          </span>
+                          <span class="form-plus">
+                            <i class="fal fa-expand-alt"></i>
+                          </span>
+                          <input type="text" class="form-control" placeholder="Enter a new choice" />
+                        </div>
+                        <p class="info p-extra-small gray-darker">Input format: Choice, (comma) SKU suffix</p>
+                        <ul class="attributes-list" id="attributesDrag">
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle">Banana Cream</span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F10 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Big Apple </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F11 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Birthday Cake </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F12 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Birthday Cake </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F13 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Blackberry Pineapple </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F14 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="true" class="editable-field" id="attributesItemTitle"> Blue Ocean </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F15 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="true" class="editable-field"> Blueberry Muffin </span>
+                            <div class="info">
+                              <span class="p-small gray-darker"> Info </span>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Caramel Macchiato </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F20 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Cherry Lightning </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F21 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Chocolate Swirl </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F22 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> Citrus Variety Pack (3 flavors) </span>
+                            <div class="attributes-edit">
+                              <span contenteditable="false" class="editable-field p-small gray-darker" id="attributesItemNumber"> F23 </span>
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END of cms-body-inner-content -->
+
+                <div class="cms-body-inner-content accordion expander attribute" id="accordionTwo">
+                  <div class="expander-inner">
+                    <div class="expander-header" id="headingTwo">
+                      <button type="button" class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true">Servings</button>
+                      <span class="counter light">7</span>
+                      <div class="plus">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.5 1V15M1.5 8H15.5" stroke="black" stroke-opacity="0.94" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="more dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editAttributesModal" data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionTwo">
+                      <div class="expander-body">
+                        <div class="form-group new-choice">
+                          <span class="form-minus">
+                            <i class="fal fa-plus"></i>
+                          </span>
+                          <span class="form-plus">
+                            <i class="fal fa-expand-alt"></i>
+                          </span>
+                          <input type="text" class="form-control" placeholder="Enter a new choice" />
+                        </div>
+
+                        <ul class="attributes-list" id="attributesDrag">
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> 1 spray bottle </span>
+                            <div class="attributes-edit">
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> 16 servings (individual ampules) </span>
+                            <div class="attributes-edit">
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> 20 servings </span>
+                            <div class="attributes-edit">
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="false" class="editable-field" id="attributesItemTitle"> 30 servings (tub) </span>
+                            <div class="attributes-edit">
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+
+                          <li class="attributes-item">
+                            <span contenteditable="true" class="editable-field" id="attributesItemTitle"> 33 servings (bottle) </span>
+                            <div class="attributes-edit">
+                              <div class="action">
+                                <span class="edit">
+                                  <i class="fal fa-pen"></i>
+                                </span>
+                                <span class="delete">
+                                  <i class="fal fa-trash-alt"></i>
+                                </span>
+                              </div>
+                              <div class="published d-none">
+                                <span class="check">
+                                  <i class="fal fa-check"></i>
+                                </span>
+                                <span class="undo">
+                                  <i class="fal fa-times"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END of cms-body-inner-content  -->
+
+                <div class="cms-body-inner-content accordion expander attribute" id="accordionThree">
+                  <div class="expander-inner">
+                    <div class="expander-header" id="headingThree">
+                      <button type="button" class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true">Color</button>
+                      <span class="counter light">0</span>
+                      <div class="plus" data-toggle="modal" data-target="#newColorModal">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.5 1V15M1.5 8H15.5" stroke="black" stroke-opacity="0.94" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="more dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editAttributesModal" data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionThree">
+                      <div class="expander-body">
+                        <div class="form-group new-choice">
+                          <span class="form-minus">
+                            <i class="fal fa-plus"></i>
+                          </span>
+                          <span class="form-plus">
+                            <i class="fal fa-expand-alt"></i>
+                          </span>
+                          <input type="text" class="form-control" placeholder="Enter a new choice" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END of cms-body-inner-content  -->
+
+                <div class="cms-body-inner-content accordion expander attribute" id="accordionFour">
+                  <div class="expander-inner">
+                    <div class="expander-header" id="headingFour">
+                      <button type="button" class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false">Formula</button>
+                      <span class="counter light">0</span>
+                      <div class="plus">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.5 1V15M1.5 8H15.5" stroke="black" stroke-opacity="0.94" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="more dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fal fa-ellipsis-v"></i>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" data-target="#editAttributesModal" data-toggle="modal">Edit</a>
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionFour">
+                      <div class="expander-body">
+                        <div class="form-group new-choice">
+                          <span class="form-minus">
+                            <i class="fal fa-plus"></i>
+                          </span>
+                          <span class="form-plus">
+                            <i class="fal fa-expand-alt"></i>
+                          </span>
+                          <input type="text" class="form-control" placeholder="Enter a new choice" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END of cms-body-inner-content  -->
+
+                <div class="alert-wrap">
+                  <div class="alert category-create">
+                    <div class="alert-message p-small">
+                      <strong> Trü Passion </strong>
+                      choice has been created for the attribute
+                      <strong> Flavor</strong>
+                    </div>
+                    <div class="alert-close">Undo</div>
+                  </div>
+                </div>
+              </div>
+              <!-- END of cms-body-content -->
+            </figure>
+          </article>
+        </section>
+        <!-- END of cms-body-inner -->
+      </aside>
+      <!-- END of cms-body -->
+
+      <button type="button" class="btn btn-add cms-add-btn add-attribute"></button>
+      <!-- END of cms-add-btn -->
+
+      <div class="hide-search hidden"></div>
+
+      <form class="search-input">
+        <div class="form-group floating">
+          <span class="floating-icon">
+            <i class="icon-expand-screen"></i>
+          </span>
+          <input type="text" class="form-control attributes" placeholder="Enter category name" />
+        </div>
+      </form>
+      <!-- END of search-input -->
+    <!-- END of pruvit-cms -->
+
+    <div id="addAttributesModal" class="modal fade right add-attributes-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header left-icon">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="icon-close"></i>
+            </button>
+            <p class="p-bold ltr-spacing4">New attribute</p>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Flavor" value="Flavor" />
+            </div>
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" />
+              <label class="form-check-label">
+                Enable SKU suffixes to this attrubute choices
+                <a href="#" data-toggle="tooltip" title="Some tooltip text!">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M8.00065 10.6668V8.00016M8.00065 5.3335H8.00732M14.6673 8.00016C14.6673 11.6821 11.6826 14.6668 8.00065 14.6668C4.31875 14.6668 1.33398 11.6821 1.33398 8.00016C1.33398 4.31826 4.31875 1.3335 8.00065 1.3335C11.6826 1.3335 14.6673 4.31826 14.6673 8.00016Z"
+                      stroke="black"
+                      stroke-opacity="0.94"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </label>
+            </div>
+
+            <h5 class="p-bold ltr-spacing4 d-flex">
+              Choices <a href="#" class="p-medium-bold ml-auto import-csv"><i class="fal fa-file"></i> Import from CSV</a>
+            </h5>
+
+            <p class="p-extra-small">Enter choices separated by the line break using this format: Choice, (comma) SKU suffix.</p>
+            <p class="p-extra-small">You can add or edit choices after the attribute is created.</p>
+
+            <textarea class="form-control p-small" rows="15">
+Banana Cream
+Big Apple
+Birthday Cake
+Blackberry Pineapple
+Blue Ocean
+Blue Razz
+Blueberry Acai
+Blueberry Muffin
+Caramel Macchiato
+Cherry Lightning
+Chocolate Swirl
+Citrus Variety Pack (3 flavors)
+Cocktail
+Colada Bliss
+Dark Cherry
+Dark Chocolate
+Eclipse
+Fig Roll Up
+French Onion
+Harvest Sunrise
+Heart Tart
+Keto Thyme
+Latte Nut
+Lime Time
+Mango Tango
+Maui Punch
+Melon Blast
+Oh Mai Tai
+Orange Dream
+Orange Vanilla
+Poppin Pear Apple
+Raspberry Lemonade
+Roasted Marshmallo
+Roasted Marshmallow
+Roasted Marshmallow Toon
+Root Bear Float
+Ruby Rush
+Salted Caramel
+Splash
+Strawberry Peach
+Sunshine
+Sweet Kreme
+Swiss Cacao
+The Original
+Toucan Tango
+Trü Passion
+Unicorn Slam
+Vanilla Bean
+Vanilla Ski
+Variety Pack
+          </textarea
+            >
+          </div>
+
+          <div class="modal-footer">
+            <div class="bottom-bar">
+              <div class="bottom-bar-left">
+                <a href="#" class="btn btn-brand">Save</a>
+                <a href="#" class="btn btn-gray">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END of add-attributes-modal -->
+
+    <div id="newColorModal" class="modal fade right add-attributes-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header left-icon">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="icon-close"></i>
+            </button>
+            <p class="p-bold ltr-spacing4">New Color Choices</p>
+          </div>
+
+          <div class="modal-body">
+            <h5 class="p-bold ltr-spacing4 d-flex">
+              Choices <a href="#" class="p-medium-bold ml-auto import-csv"><i class="fal fa-file"></i> Import from CSV</a>
+            </h5>
+
+            <p class="p-extra-small">Enter choices separated by the line break using this format:</p>
+            <p class="p-extra-small">You can add or edit choices after the attribute is created.</p>
+
+            <textarea class="form-control p-small" rows="15"></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <div class="bottom-bar">
+              <div class="bottom-bar-left">
+                <a href="#" class="btn btn-brand">Save</a>
+                <a href="#" class="btn btn-gray">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END of newColorModal -->
+
+    <div id="deleteModal" class="modal fade delete-modal" tabindex="-1" aria-modal="true" role="dialog">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="p-bold">You cannot delete this attribute</p>
+            <p class="p-medium mb-3">The attribute is used in 32 products. Please remove this attribute from the products first.</p>
+            <a href="#" class="btn btn-gray show-products">Show products</a>
+            <a href="#" class="btn btn-gray" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END of delete-modal -->
+
+    <div id="editAttributesModal" class="modal fade right edit-attributes-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header left-icon">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="icon-close"></i>
+            </button>
+            <p class="p-bold ltr-spacing4">Edit attribute</p>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Flavor" value="Flavor" />
+            </div>
+
+            <h5 class="p-bold ltr-spacing4 d-flex">
+              Add new choices <a href="#" class="p-medium-bold ml-auto import-csv"><i class="fal fa-file"></i> Import from CSV</a>
+            </h5>
+
+            <p class="p-extra-small">Enter choices separated by the line break. You can add or edit choices after the attribute is created.</p>
+            <textarea class="form-control p-small" rows="15"></textarea>
+          </div>
+          <div class="modal-footer">
+            <div class="bottom-bar">
+              <div class="bottom-bar-left">
+                <a href="#" class="btn btn-brand">Save</a>
+                <a href="#" class="btn btn-gray">Cancel</a>
+              </div>
+              <button href="#" class="btn btn-delete"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END of edit-attributes-modal -->
+
+    <div id="accountSettingsModal" class="modal fade right account-settings-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header left-icon">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="icon-close"></i>
+            </button>
+            <h5 class="modal-title">Account settings</h5>
+          </div>
+
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col-6">
+                <label>First name</label>
+                <input type="text" class="form-control" placeholder="Enter first name" value="Gene">
+              </div>
+              <div class="form-group col-6">
+                <label>Last name</label>
+                <input type="text" class="form-control" placeholder="Enter last name" value="Pribytkin">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-6">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Enter email" value="gene@uxtensive.com">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-12 profile-photo">
+                <label class="mb-3">Profile photo</label>
+
+                <div class="row">
+                  <div class="col prf-img">
+                    <img src="assets/images/avatar.png" class="rounded-circle img-fluid" alt="">
+                  </div>
+                  <div class="col">
+                    <a href="#" class="btn btn-gray">Change photo</a>
+                    <p class="p-extra-small gray-dark-lighter">JPG, PNG or GIF up to 4Mb</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-6">
+                <label class="mb-2">Password</label>
+                <a href="#" class="btn btn-gray">Change password</a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <div class="bottom-bar">
+              <div class="bottom-bar-left">
+                <a href="#" class="btn btn-gray">Save</a>
+                <a href="#" class="btn btn-gray">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!-- END of account-settings-modal -->

@@ -1,0 +1,90 @@
+<div class="pruvit-cms">
+
+  <aside class="left-sidebar">
+    <button  class="btn-add expand-btn"></button>
+    <section class="cms-sidebar full">
+      <ul class="cms-sidebar-list">
+        <li>
+          <a routerLink="/dashboard" class="cms-sidebar-brand">
+            <img src="assets/images/Pruvit-CMS-Logo.svg" alt="pruvit logo" class="img-fl">
+          </a>
+        </li>
+        <li class="cms-sidebar-item nav-search">
+          <div class="form-group icon" >
+            <i class="fal fa-search"></i>
+            <input type="text" class="form-control" placeholder="Search" />
+          </div>
+          <a href="#" class="cms-sidebar-link">
+            <i class="icon-search"></i>
+          </a>
+        </li>
+        <li class="cms-sidebar-item" routerLinkActive="active">
+          <a routerLink="/dashboard" class="cms-sidebar-link active" style="cursor: pointer;">
+            <i class="icon-dashboard"></i>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <li class="cms-sidebar-item" routerLinkActive="active">
+          <a  class="cms-sidebar-link" style="cursor: pointer;">
+            <i class="icon-products"></i>
+            <span class="text">Products</span>
+          </a>
+        </li>
+        <li class="cms-sidebar-item" routerLinkActive="active">
+          <a routerLink="/collections/attributes" class="cms-sidebar-link" style="cursor: pointer;">
+            <i class="icon-tag"></i>
+            <span class="text">Collections</span>
+          </a>
+        </li>
+        <li class="cms-sidebar-item">
+          <a class="cms-sidebar-link" style="cursor: pointer;">
+            <i class="icon-translation"></i>
+            <span class="text">Translation</span>
+          </a>
+        </li>
+        <li class="cms-sidebar-item">
+          <a class="cms-sidebar-link" style="cursor: pointer;">
+            <i class="icon-pricing"></i>
+            <span class="text">Price lists</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="cms-sidebar-list">
+        <li class="cms-sidebar-item">
+          <a class="cms-sidebar-link" style="cursor: pointer;">
+            <i class="icon-settings"></i>
+            <span class="text">Settings</span>
+          </a>
+        </li>
+        <li class="cms-sidebar-item">
+          <a class="cms-sidebar-link" style="cursor: pointer;">
+            <i class="icon-question"></i>
+            <span class="text">Help</span>
+          </a>
+        </li>
+        <li class="cms-sidebar-item avatar">
+          <span class="cms-sidebar-link">
+
+            <div class="more dropdown">
+              <span class="dropdown-toggle btn arrows btn-text" data-toggle="dropdown" aria-expanded="false" >
+                <div *ngFor="let user of userLists">
+                  <img src='{{user.avatar == "" ? "assets/images/demoUser.png":"{{user.avatar}}"}}' alt="" class="img-fluid cms-sidebar-admin" />
+                {{user.firstName +" "+ user.lastName}}
+                </div>
+
+                </span>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" data-target="#accountSettingsModal" data-toggle="modal">Account settings</a>
+                <a class="dropdown-item" href="#" (click)="doLogout()">Log out</a>
+              </div>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </section>
+    <!-- END of cms-sidebar -->
+  </aside>
+  <!-- END of left-sidebar -->
+
+
