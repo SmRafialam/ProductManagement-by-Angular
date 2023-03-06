@@ -7,8 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
+  apiHost!:string;
 
   constructor(private http: HttpClient,private router:Router) {
+    //this.apiHost = env
 
   }
 
