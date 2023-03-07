@@ -2,20 +2,24 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class ApiService {
   apiHost!:string;
 
   constructor(private http: HttpClient,private router:Router) {
-    //this.apiHost = env
+    console.log(environment.apiHost);
 
+    this.apiHost = environment.apiHost;
   }
 
   onLogin(obj:any): Observable<any>{
-    const url = 'https://pim-nest.vercel.app/api/v1/auth/login';
+    // const url = 'https://pim-nest.vercel.app/api/v1/auth/login';
+    const endpoint = 'auth/login';
+    const url = `${this.apiHost}${endpoint}`
     return this.http.post(url,obj);
    }
 
@@ -32,12 +36,11 @@ export class LoginService {
    }
 
    getUserInfo(): Observable<any>{
-    const url = 'https://pim-nest.vercel.app/api/v1/user/info';
+    // const url = 'https://pim-nest.vercel.app/api/v1/user/info';
+    const endpoint = 'user/info';
+    const url = `${this.apiHost}${endpoint}`;
     return this.http.get(url);
    }
 
-   getCategories(){
-    const url = 'https://pim-nest.vercel.app/api/v1/collections/snippet/category';
-    return this.http.get(url);
-   }
+
 }

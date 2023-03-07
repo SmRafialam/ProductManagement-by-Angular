@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
+import { ApiService } from '../services/api.service';
+import { CategoryService } from '../services/category.service';
 declare var $:any;
 
 
@@ -11,7 +12,7 @@ declare var $:any;
 export class DashboardComponent implements OnInit{
   userLists: any[] = [];
 
-  constructor(private accountService:LoginService){
+  constructor(private accountService:ApiService,private catServices: CategoryService){
 
   }
 
@@ -29,7 +30,7 @@ export class DashboardComponent implements OnInit{
   }
 
   loadCategories(){
-    this.accountService.getCategories().subscribe((data:any)=>{
+    this.catServices.getCategories().subscribe((data:any)=>{
       console.log(data.result);
     })
   }

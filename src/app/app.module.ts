@@ -11,7 +11,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomInterceptor } from './custom.interceptor';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +23,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AuthModule,
     SharedModule,
-    CollectionsModule,
-  ],
+    CollectionsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { ApiService } from 'src/app/services/api.service';
 var $:any;
 @Component({
   selector: 'app-sidebar',
@@ -10,12 +10,13 @@ export class SidebarComponent implements OnInit{
 
   userLists: any[] = [];
 
-  constructor(private accountService:LoginService){
+  constructor(private accountService:ApiService){
 
   }
 
   ngOnInit(): void {
     this.loadUsers();
+    this.loadScripts();
     //window.location.reload();
   }
 
@@ -28,6 +29,15 @@ export class SidebarComponent implements OnInit{
       this.userLists = data.result;
       console.log(this.userLists);
     })
+  }
+
+  private loadScripts() {
+    console.log("custom js")
+    $(".expand-btn").click(function () {
+      console.log("expand")
+      $(".pruvit-cms").toggleClass("expandSideMenu");
+    });
+
   }
 
 }
