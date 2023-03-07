@@ -37,7 +37,7 @@
                 <div class="expander-header" id="headingFour">
                   <div class="item btn-item">
                     <div class="inner-cont">
-                      <span class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true">Ketones</span>
+                      <span class="btn arrow collapsed" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Ketones</span>
                     </div>
                     <div class="more d-flex">
                       <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
@@ -57,8 +57,8 @@
                     </div>
                   </div>
                 </div>
-                <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
-                  data-parent="#accordionExample">
+                <div id="collapseExample" class="collapse show" aria-labelledby="headingFour"
+                  *ngIf="isCollapsed">
                   <div class="expander-body">
                     <ul class="list" *ngFor="let categories of categoryItems">
                       <li class="item" >
