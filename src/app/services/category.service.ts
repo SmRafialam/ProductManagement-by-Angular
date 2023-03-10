@@ -19,4 +19,6 @@ export class CategoryService {
      const url = `${this.apiHost}${endpoint}`;
      return this.http.get(url);
     }
+
+
 }

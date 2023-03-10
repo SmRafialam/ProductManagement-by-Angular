@@ -42,5 +42,10 @@ export class ApiService {
     return this.http.get(url);
    }
 
+   refreshToken() {
+    const endpoint = 'auth/login';
+    const url = `${this.apiHost}${endpoint}`
+    return this.http.post(url + 'refreshtoken', { });
+  }
 
 }
