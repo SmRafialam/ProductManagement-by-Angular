@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-var $:any;
+declare var $:any;
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

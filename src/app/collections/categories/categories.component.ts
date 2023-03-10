@@ -74,9 +74,11 @@ export class CategoriesComponent implements OnInit{
     if(curEle.parent == parent){
       const currentCategory = {...curEle,subCategories:[]};
       const child = this.CategoryData(data,curEle.id);
+      if(child.length !== 0){
+        currentCategory.subCategories = child;
+      }
+        acc.push(currentCategory)
 
-      currentCategory.subCategories.push(child);
-      acc.push(currentCategory)
     }
 
     return acc;
