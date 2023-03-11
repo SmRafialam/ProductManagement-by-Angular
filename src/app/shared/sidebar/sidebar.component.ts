@@ -16,8 +16,7 @@ export class SidebarComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadUsers();
-    this.loadScripts();
-    //window.location.reload();
+    //this.loadScripts();
   }
 
   doLogout(){
@@ -31,13 +30,13 @@ export class SidebarComponent implements OnInit{
     })
   }
 
-  private loadScripts() {
-    console.log("custom js")
-    $(".expand-btn").click(function () {
-      console.log("expand")
-      $(".pruvit-cms").toggleClass("expandSideMenu");
-    });
+  // private loadScripts() {
+  //   console.log("custom js")
+  //   $(".expand-btn").click(function () {
+  //     console.log("expand")
+  //     $(".pruvit-cms").toggleClass("expandSideMenu");
+  //   });
 
-  }
+  // }
 
 }
