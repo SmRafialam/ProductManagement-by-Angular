@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../services/auth.service';
 import { CategoryService } from '../services/category.service';
 declare var $:any;
 
@@ -43,6 +44,8 @@ export class DashboardComponent implements OnInit{
     });
 
   }
+
+
 }
 
 

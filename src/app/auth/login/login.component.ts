@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit{
     }
     return localData;
   }
+
 
   doLogin(){
     alert("Ok!!")

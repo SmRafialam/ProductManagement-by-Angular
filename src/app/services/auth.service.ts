@@ -48,4 +48,10 @@ export class ApiService {
     return this.http.post(url + 'refreshtoken', { });
   }
 
+  getRefreshToken(): Observable<any>{
+    const url = 'https://pim-nest.vercel.app/api/v1/auth/access-token';
+    return this.http.get(url);
+
+  }
+
 }

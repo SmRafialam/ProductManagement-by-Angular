@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomInterceptor } from './custom.interceptor';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AuthModule,
     SharedModule,
-    CollectionsModule
+    CollectionsModule,
+    BrowserAnimationsModule,
+
     ],
   providers: [
     {

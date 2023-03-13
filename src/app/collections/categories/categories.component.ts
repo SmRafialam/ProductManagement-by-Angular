@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
 declare var $:any;
 
 @Component({
@@ -11,7 +13,10 @@ declare var $:any;
 export class CategoriesComponent implements OnInit{
   public isCollapsed = true;
   categoryItems : any[] = [];
+  subCategoryItems : any[] = [];
   public root: any[] = [];
+  treeControl = new NestedTreeControl<any>(node => node.subCategories);
+  dataSource = new MatTreeNestedDataSource<any>();
 
   constructor(private accountService: ApiService, private catServices: CategoryService){
 
@@ -20,15 +25,18 @@ export class CategoriesComponent implements OnInit{
   ngOnInit(): void {
     this.loadScripts();
     this.loadCategories();
+    this.dataSource.data = this.subCategoryItems;
 
   }
+
+  hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;
 
   loadCategories(){
     this.catServices.getCategories().subscribe((data:any)=>{
       console.log(data.result);
       this.categoryItems = data.result;
-      this.categoryItems = this.CategoryData(data.result);
-      console.log(this.categoryItems);
+      this.subCategoryItems = this.CategoryData(data.result);
+      console.log(this.subCategoryItems);
         //Create root for top-level node(s)
         // Cache found parent index
     //     const map: any[] = [];

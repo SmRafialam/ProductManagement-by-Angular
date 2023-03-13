@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/services/auth.service';
 declare var $:any;
 @Component({
   selector: 'app-sidebar',
