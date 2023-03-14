@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from './services/auth.service';
 declare var $:any;
 
 @Component({
@@ -9,9 +10,14 @@ declare var $:any;
 export class AppComponent implements OnInit{
   title = 'PIM';
 
+  constructor(private accountService: ApiService){
+
+  }
+
   ngOnInit(): void {
 
       this.loadScripts();
+      this.getUsersData();
     }
 
 
@@ -21,6 +27,11 @@ export class AppComponent implements OnInit{
       console.log("expand")
       $(".pruvit-cms").toggleClass("expandSideMenu");
     });
+  }
 
+  getUsersData(){
+    this.accountService.getUserInfo().subscribe((data:any)=>{
+      return this.accountService.setUserData(data.result);
+    })
   }
 }

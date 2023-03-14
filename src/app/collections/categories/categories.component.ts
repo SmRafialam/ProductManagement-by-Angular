@@ -25,7 +25,7 @@ export class CategoriesComponent implements OnInit{
   ngOnInit(): void {
     this.loadScripts();
     this.loadCategories();
-    this.dataSource.data = this.subCategoryItems;
+    // this.dataSource.data = this.categoryItems;
 
   }
 
@@ -34,9 +34,9 @@ export class CategoriesComponent implements OnInit{
   loadCategories(){
     this.catServices.getCategories().subscribe((data:any)=>{
       console.log(data.result);
-      this.categoryItems = data.result;
-      this.subCategoryItems = this.CategoryData(data.result);
-      console.log(this.subCategoryItems);
+      //this.categoryItems = data.result;
+      this.categoryItems = this.CategoryData(data.result);
+      console.log(this.categoryItems);
         //Create root for top-level node(s)
         // Cache found parent index
     //     const map: any[] = [];

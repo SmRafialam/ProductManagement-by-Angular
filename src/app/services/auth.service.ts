@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
   apiHost!:string;
+  private userData = new BehaviorSubject<any>([]);
 
   constructor(private http: HttpClient,private router:Router) {
     console.log(environment.apiHost);
@@ -41,6 +42,18 @@ export class ApiService {
     const url = `${this.apiHost}${endpoint}`;
     return this.http.get(url);
    }
+
+   setUserData(users:any){
+    this.userData.next(users)
+   }
+
+   get UserData$(){
+    return this.userData;
+   }
+
+
+
+
 
    refreshToken() {
     const endpoint = 'auth/login';
