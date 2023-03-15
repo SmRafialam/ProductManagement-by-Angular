@@ -9,12 +9,16 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
   apiHost!:string;
-  private userData = new BehaviorSubject<any>([]);
+  private userData = new BehaviorSubject<any>(null);
+  public currentUser$ = this.userData.asObservable();
+
+
 
   constructor(private http: HttpClient,private router:Router) {
     console.log(environment.apiHost);
 
     this.apiHost = environment.apiHost;
+
   }
 
   onLogin(obj:any): Observable<any>{
@@ -31,9 +35,14 @@ export class ApiService {
 
    onLogout(){
     let removeToken = localStorage.removeItem('access_token');
+    let removeUser = localStorage.removeItem('user');
     if(removeToken == null){
       this.router.navigate(['/']);
     }
+    if(removeUser == null){
+      this.router.navigate(['/']);
+    }
+
    }
 
    getUserInfo(): Observable<any>{
@@ -44,14 +53,28 @@ export class ApiService {
    }
 
    setUserData(users:any){
-    this.userData.next(users)
+    this.userData.next(users);
+    localStorage.setItem('user', JSON.stringify(users));
    }
 
    get UserData$(){
+    localStorage.getItem('user');
     return this.userData;
    }
 
+   doUserLogin(){
+        // authenticate the user and retrieve their information
 
+        this.UserData$.subscribe((user)=>{
+          // store the user information in localStorage
+          localStorage.setItem('currentUser$', JSON.stringify(user));
+
+          // emit the user information using the currentUserSubject
+          this.userData.next(user);
+        })
+
+
+  }
 
 
 
@@ -59,9 +82,9 @@ export class ApiService {
     const endpoint = 'auth/login';
     const url = `${this.apiHost}${endpoint}`
     return this.http.post(url + 'refreshtoken', { });
-  }
+   }
 
-  getRefreshToken(): Observable<any>{
+   getRefreshToken(): Observable<any>{
     const url = 'https://pim-nest.vercel.app/api/v1/auth/access-token';
     return this.http.get(url);
 

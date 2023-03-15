@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/auth.service';
 declare var $:any;
@@ -15,10 +16,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
-      this.loadScripts();
-      this.getUsersData();
-    }
+    this.loadScripts();
+    this.getUsersData();
+  }
 
 
   private loadScripts() {
@@ -32,6 +32,9 @@ export class AppComponent implements OnInit{
   getUsersData(){
     this.accountService.getUserInfo().subscribe((data:any)=>{
       return this.accountService.setUserData(data.result);
-    })
+    },(err:HttpErrorResponse)=>{
+      'handle your error here'
+      console.log(err);
+    });
   }
 }

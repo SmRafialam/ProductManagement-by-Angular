@@ -40,4 +40,11 @@ export class LoginComponent implements OnInit{
       this.router.navigateByUrl('/dashboard');
     })
   }
+
+  // doUserLogin(){
+  //   this.accountService.UserData$.subscribe((res)=>{
+  //     localStorage.setItem('access_token',res.result[0]);
+
+  //   })
+  // }
 }

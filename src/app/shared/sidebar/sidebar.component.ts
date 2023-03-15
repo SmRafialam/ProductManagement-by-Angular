@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/auth.service';
 declare var $:any;
 @Component({
@@ -10,6 +11,7 @@ export class SidebarComponent implements OnInit{
 
   userLists: any[] = [];
 
+
   constructor(private accountService:ApiService){
 
   }
@@ -17,6 +19,8 @@ export class SidebarComponent implements OnInit{
   ngOnInit(): void {
     this.loadUsers();
     //this.loadScripts();
+
+
   }
 
   doLogout(){
@@ -24,10 +28,11 @@ export class SidebarComponent implements OnInit{
   }
 
   loadUsers(){
-    this.accountService.getUserInfo().subscribe((data)=>{
-      this.userLists = data.result;
+    this.accountService.UserData$.subscribe((data:any)=>{
+      this.userLists = data;
       console.log(this.userLists);
-      return this.accountService.setUserData(this.userLists);
+
+
     })
   }
 

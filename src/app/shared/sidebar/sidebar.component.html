@@ -123,7 +123,7 @@
 
               <div class="row">
                 <div class="col prf-img">
-                  <img src='{{user.avatar == "" ? "assets/images/demoUser.png":"{{user.avatar}}"}}' class="rounded-circle img-fluid" alt="">
+                  <img src='{{user.avatar == ""||null||undefined ? "assets/images/demoUser.png":"{{user.avatar}}"}}' class="rounded-circle img-fluid" alt="">
                 </div>
                 <div class="col">
                   <a href="#" class="btn btn-gray">Change photo</a>

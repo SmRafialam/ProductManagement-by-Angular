@@ -32,14 +32,14 @@
 
               <p>No categories added</p>
             </div>
-            <div class="cms-body-inner-content accordion expander" id="accordionOne">
-              <mat-tree [dataSource]="categoryItems" [treeControl]="treeControl" class="example-tree">
+            <div class="cms-body-inner-content accordion expander expander-body " id="accordionOne">
+              <mat-tree [dataSource]="categoryItems" [treeControl]="treeControl" class="example-tree category">
 
-                <mat-tree-node *matTreeNodeDef="let cat" matTreeNodeToggle>
+                <mat-tree-node *matTreeNodeDef="let cat" class="list expander-header" matTreeNodeToggle>
                   <span class="btn arrow collapsed" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"> {{cat.name}}</span>
                 </mat-tree-node>
 
-                <mat-nested-tree-node *matTreeNodeDef="let cat; when: hasChild">
+                <mat-nested-tree-node *matTreeNodeDef="let cat; when: hasChild" class="item">
                     <div class="mat-tree-node">
                       <button mat-icon-button matTreeNodeToggle
                               [attr.aria-label]="'Toggle ' + cat.name">
