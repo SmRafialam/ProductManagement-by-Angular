@@ -35,99 +35,28 @@
             <div class="cms-body-inner-content accordion expander expander-body " id="accordionOne">
               <mat-tree [dataSource]="categoryItems" [treeControl]="treeControl" class="example-tree category">
 
-                <mat-tree-node *matTreeNodeDef="let cat" class="list expander-header" matTreeNodeToggle>
-                  <span class="btn arrow collapsed" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"> {{cat.name}}</span>
+                <mat-tree-node *matTreeNodeDef="let cat" class="list expander-list parent-node" matTreeNodeToggle matTreeNodePadding>
+                  <span class="btn arrow collapsed" [class.parent]="isParent">{{cat.name}}</span>
                 </mat-tree-node>
 
-                <mat-nested-tree-node *matTreeNodeDef="let cat; when: hasChild" class="item">
-                    <div class="mat-tree-node">
-                      <button mat-icon-button matTreeNodeToggle
-                              [attr.aria-label]="'Toggle ' + cat.name">
-                        <mat-icon class="mat-icon-rtl-mirror">
-                            {{treeControl.isExpanded(cat) ? 'expand_more' : 'chevron_right'}}
-                        </mat-icon>
-                      </button>
-                      {{cat.name}}
-                    </div>
-                    <div [class.example-tree-invisible]="!treeControl.isExpanded(cat)"
-                        role="group">
-                      <ng-container matTreeNodeOutlet></ng-container>
+                <mat-nested-tree-node *matTreeNodeDef="let cat; when: hasChild" class="item child-node">
+                  <div class="mat-tree-node" [class.parent]="isParent">
+                    <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + cat.name">
+                      <mat-icon class="mat-icon-rtl-mirror">
+                          {{treeControl.isExpanded(cat) ? 'expand_more' : 'chevron_right'}}
+                      </mat-icon>
+                    </button>
+                    <span>{{cat.name}}</span>
+
+                  </div>
+                  <div [class.example-tree-invisible]="!treeControl.isExpanded(cat)" role="group">
+                    <ng-container matTreeNodeOutlet></ng-container>
                   </div>
                 </mat-nested-tree-node>
 
               </mat-tree>
             </div>
-
-
-               <!-- <div class="expander-inner category" *ngFor="let categories of subCategoryItems">
-                <div class="expander-header" id="headingFour">
-                  <div class="item btn-item">
-                    <div class="inner-cont">
-                      <span class="btn arrow collapsed" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">{{categories.name}}</span>
-                    </div>
-                    <div class="more d-flex">
-                      <div class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
-                        <a class="icon-plus-circle fs20" data-target="#addCategoryModal" data-toggle="modal"></a>
-                      </div>
-                      <div class="dropdown">
-                        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                          <i class="fal fa-ellipsis-v"></i>
-                        </span>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#" data-target="#editCategoryModal"
-                            data-toggle="modal">Edit</a>
-                          <a class="dropdown-item" href="#" data-target="#deleteModal"
-                            data-toggle="modal">Delete</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="collapseExample" class="collapse show" aria-labelledby="headingFour"
-                  *ngIf="isCollapsed">
-                  <div class="expander-body">
-                    <ul class="list" *ngFor="let categories of subCategoryItems">
-                      <li class="item" >
-                        <div class="inner-cont" >
-                          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">{{categories.subCategories.name}}</a>
-                        </div>
-                        <div class="more d-flex">
-                          <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
-                            <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
-                          </span>
-                          <div class="dropdown">
-                            <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                              <i class="fal fa-ellipsis-v"></i>
-                            </span>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#" data-target="#editCategoryModal"
-                                data-toggle="modal">Edit</a>
-                              <a class="dropdown-item" href="#" data-target="#deleteModal"
-                                data-toggle="modal">Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-
-                    </ul>
-                  </div>
-                </div>
-        </div> -->
-        <!-- END of category, expander-inner -->
-
-
-            <!-- END of cms-body-inner-content, expander -->
-
-            <!-- <div class="alert-wrap">
-              <div class="alert category-create">
-                <div class="alert-message p-small">Categories have been created</div>
-                <div class="alert-close">Undo</div>
-              </div>
-            </div> -->
-
-          <!-- </div> -->
            </div>
-          <!-- END of cms-body-content -->
          </figure>
        </article>
     </section>

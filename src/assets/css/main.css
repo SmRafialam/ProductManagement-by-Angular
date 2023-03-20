@@ -4009,7 +4009,7 @@ input[type="number"] {
   color: rgba(0, 0, 0, 0.94);
   font-size: 16px;
   line-height: 24px;
-  font-weight: 700 !important;
+  /* font-weight: 700 !important; */
   padding: 4px 0 4px 20px;
   width: 100%;
   text-align: left;

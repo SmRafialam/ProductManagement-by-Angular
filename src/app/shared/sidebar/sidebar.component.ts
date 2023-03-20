@@ -29,11 +29,15 @@ export class SidebarComponent implements OnInit{
 
   loadUsers(){
     this.accountService.UserData$.subscribe((data:any)=>{
-      this.userLists = data;
-      console.log(this.userLists);
-
+      const localUSer = localStorage.getItem('user');
+    //console.log(localData);
+    if(localUSer!= null){
+      this.userLists = JSON.parse(localUSer)
+    }
+    return localUSer;
 
     })
+
   }
 
   // private loadScripts() {

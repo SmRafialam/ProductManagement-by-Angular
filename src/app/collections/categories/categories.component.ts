@@ -11,6 +11,8 @@ declare var $:any;
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit{
+  isParent = (_: number, node: any) => node.subCategories && node.subCategories.length > 0;
+  isChild = (_: number, node: any) => !(node.subCategories && node.subCategories.length > 0);
   public isCollapsed = true;
   categoryItems : any[] = [];
   subCategoryItems : any[] = [];
@@ -19,6 +21,7 @@ export class CategoriesComponent implements OnInit{
   dataSource = new MatTreeNestedDataSource<any>();
 
   constructor(private accountService: ApiService, private catServices: CategoryService){
+
 
   }
 
@@ -30,6 +33,8 @@ export class CategoriesComponent implements OnInit{
   }
 
   hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;
+  // hasParent = this.treeControl.getParent(node:any);
+
 
   loadCategories(){
     this.catServices.getCategories().subscribe((data:any)=>{

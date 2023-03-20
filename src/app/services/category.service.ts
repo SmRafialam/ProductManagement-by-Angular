@@ -20,5 +20,11 @@ export class CategoryService {
      return this.http.get(url);
     }
 
+  getAttributes(){
+    const endpoint = 'collections/attribute';
+     const url = `${this.apiHost}${endpoint}`;
+     return this.http.get(url);
+  }
+
 
 }

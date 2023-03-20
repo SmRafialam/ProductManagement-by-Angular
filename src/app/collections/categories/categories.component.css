@@ -8,14 +8,13 @@
   margin-bottom: 0;
   list-style-type: none;
 
-
 }
 
 /*
  * This padding sets alignment of the nested nodes.
  */
 .example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 /*
@@ -24,5 +23,34 @@
  * under the same parent.
  */
 .example-tree div[role=group] > .mat-tree-node {
-  padding-left: 15px;
+  padding-left: 20px;
 }
+
+
+
+/* .category .expander-list span{
+
+  font-weight: bold;
+} */
+
+
+/* .mat-tree-node[matTreeNodePadding] {
+  font-weight: bold;
+} */
+.category .mat-tree-node{
+  font-weight: bold;
+}
+
+
+/*
+.category .list.expander-list > span {
+  font-weight: bold;
+} */
+
+/* .parent {
+  font-weight: bold;
+} */
+
+/* .category .list.expander-list > span:not(.child) {
+  font-weight: bold;
+} */
