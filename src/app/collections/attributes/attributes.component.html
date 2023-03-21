@@ -23,7 +23,7 @@
                 <div class="cms-body-inner-content accordion expander attribute" id="accordionOne">
                   <div class="expander-inner" *ngFor="let items of attributeItems">
                     <div class="expander-header" id="headingOne" >
-                      <button type="button" class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseExample" *ngIf="isCollapsed">{{items.name}}</button>
+                      <button type="button" class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseExample" *ngIf="isCollapsed" ng-click="doSomething($event)">{{items.name}}</button>
                       <span class="counter light">{{items.choices.length}}</span>
                       <div class="plus">
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">

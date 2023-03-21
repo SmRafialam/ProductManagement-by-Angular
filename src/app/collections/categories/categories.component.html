@@ -64,7 +64,7 @@
   </aside>
   <!-- END of cms-body -->
 
-  <button type="button" class="btn btn-add cms-add-btn add-category"></button>
+  <button type="button" class="btn btn-add cms-add-btn add-category dropdown-item" data-target="#addCategoryModal" data-toggle="modal"></button>
   <!-- END of cms-add-btn -->
 
   <div class="hide-search hidden"></div>
@@ -80,3 +80,297 @@
   <!-- END of search-input -->
 </div>
 <!-- END of pruvit-cms -->
+
+<!-- add category modal -->
+<div id="addCategoryModal" class="modal fade right add-category-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header left-icon-tab">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="icon-close"></i>
+        </button>
+        <ul class="modal-tab nav-tabs">
+          <li class="tab-item active">
+            <a href="#newCategory" data-toggle="tab"> New category </a>
+          </li>
+          <li class="tab-item">
+            <a href="#bulk" data-toggle="tab"> Bulk Add </a>
+          </li>
+        </ul>
+      </div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+      <div class="modal-body tab-content">
+        <div class="tab-pane active" id="newCategory">
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="name" placeholder="Add Category" />
+          </div>
+
+          <div class="accordion expander tab-content" id="accordionExample">
+            <div class="expander-inner">
+              <div class="expander-header" id="headingDescription">
+                <button type="button" class="btn" data-toggle="collapse"
+                  data-target="#description">DESCRIPTION</button>
+              </div>
+              <div id="description" class="collapse" aria-labelledby="headingDescription"
+                data-parent="#accordionExample">
+                  <div class="form-group">
+                    <label class="brand-secondary mb-0">Short text</label>
+                    <p class="p-extra-small gray-darker mb-2">Short text is displayed under the category heading in a
+                      site catalog</p>
+
+                    <textarea class="form-control" formControlName="shortText"
+                      rows="3">The world's preeminent Pure Therapeutic Ketones made naturally.</textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="brand-secondary mb-0">Long text</label>
+                    <p class="p-extra-small gray-darker mb-2">Long text is displayed in the product catalog as a
+                      separate section after the title and short text</p>
+                    <textarea class="form-control" formControlName="longText" rows="6"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="brand-secondary mb-0">Media</label>
+                    <div class="dragbox-outer">
+
+                      <div class="dragBox">
+                        <p class="drag-icon"></p>
+                        <p class="drag-text p-medium-bold gray-dark">Drop files or click to select</p>
+                        <input type="file" onchange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" class="uploadFile">
+                      </div>
+
+                      <label class="upload">
+                        <input type="file" class="upload-default" onchange="dragNdrop(event)" />
+                        <span class="upload-custom add-form-file"> Add from Files </span>
+                      </label>
+
+                      <label class="upload">
+                        <input type="file" class="upload-default" onchange="dragNdrop(event)" />
+                        <span class="upload-custom add-from-computer"> Add from Computer </span>
+                      </label>
+                      <div id="preview">
+                        <div class="preview">
+                          <div class="preview-file-details">
+                            <img src="assets/images/avatar.png" class="preview-img" alt="" />
+                            <span class="preview-text">avatar.png</span>
+                            <span class="preview-size">2.5Mb</span>
+                          </div>
+                          <span class="preview-close">
+                            <i class="fal fa-times"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="expander-inner">
+              <div class="expander-header" id="headingSubcategories">
+                <button type="button" class="btn" data-toggle="collapse"
+                  data-target="#Subcategories">SUBCATEGORIES</button>
+              </div>
+              <div id="Subcategories" class="collapse" aria-labelledby="headingSubcategories"
+                data-parent="#accordionExample">
+                <div class="expander-body">
+                  <p class="p-extra-small gray-darker mb-2">Enter subcategories separated by a line break. Use TAB
+                    button on your keyboard to add another nesting level.</p>
+                  <textarea class="form-control p-small" rows="6">
+                      KETO//OS NAT®
+                      KETO//OS® Unleashed
+                      KETO//OS® Black Label
+                      KETO//OS® PRØ™
+                      KETO//UP™
+                    </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="bulk" class="bulk">
+          <div class="form-group">
+            <p class="p-extra-small gray-darker mb-2">Enter categories separated by a line break. Use TAB button on
+              your keyboard to add another nesting level.</p>
+            <textarea class="form-control p-small" rows="10">
+
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="bottom-bar">
+          <div class="bottom-bar-left">
+            <button class="btn btn-brand" type="submit">Save</button>
+            <a href="#" class="btn btn-gray">Cancel</a>
+          </div>
+        </div>
+      </div>
+     </form>
+
+    </div>
+  </div>
+</div>
+<!-- END of add-category-modal -->
+
+<div id="editCategoryModal" class="modal fade right edit-category-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header left-icon">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="icon-close"></i>
+        </button>
+        <h5 class="modal-title">Edit category</h5>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Add Category" value="Ketones" />
+        </div>
+        <div class="description">
+          <h1 class="p-bold description-heading">Descriptions</h1>
+          <div class="form-group">
+            <label class="brand-secondary mb-0">Short text</label>
+            <p class="p-extra-small gray-darker mb-2">Short text is displayed under the category heading in a site
+              catalog</p>
+            <textarea class="form-control"
+              rows="3"> </textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="brand-secondary mb-0">Long text</label>
+            <p class="p-extra-small gray-darker mb-2">Long text is displayed in the product catalog as a separate
+              section after the title and short text</p>
+            <textarea class="form-control" rows="6"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="brand-secondary mb-0">Media</label>
+            <div class="dragbox-outer">
+
+              <div class="dragBox">
+                <p class="drag-icon"></p>
+                <p class="drag-text p-medium-bold gray-dark">Drop files or click to select</p>
+                <input type="file" onchange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" class="uploadFile">
+              </div>
+
+              <label class="upload">
+                <input type="file" class="upload-default" onchange="dragNdrop(event)" />
+                <span class="upload-custom add-form-file"> Add from Files </span>
+              </label>
+
+              <label class="upload">
+                <input type="file" class="upload-default" onchange="dragNdrop(event)" />
+                <span class="upload-custom add-from-computer"> Add from Computer </span>
+              </label>
+              <div id="preview">
+                <div class="preview">
+                  <div class="preview-file-details">
+                    <img src="assets/images/avatar.png" class="preview-img" alt="" />
+                    <span class="preview-text">avatar.png</span>
+                    <span class="preview-size">2.5Mb</span>
+                  </div>
+                  <span class="preview-close">
+                    <i class="fal fa-times"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="bottom-bar">
+          <div class="bottom-bar-left">
+            <a href="#" class="btn btn-brand">Save</a>
+            <a href="#" class="btn btn-gray">Cancel</a>
+          </div>
+          <button href="#" class="btn btn-delete"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END of edit-category-modal -->
+
+<div id="deleteModal" class="modal fade delete-modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="p-bold">You cannot delete this category</p>
+        <p class="p-medium mb-3">The category containts 4 products – please change a category for these products
+          first.</p>
+        <a href="#" class="btn btn-gray show-products">Show products</a>
+        <a href="#" class="btn btn-gray" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END of deleteModal -->
+
+<div id="accountSettingsModal" class="modal fade right account-settings-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header left-icon">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="icon-close"></i>
+        </button>
+        <h5 class="modal-title">Account settings</h5>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="form-group col-6">
+            <label>First name</label>
+            <input type="text" class="form-control" placeholder="Enter first name" value="Gene">
+          </div>
+          <div class="form-group col-6">
+            <label>Last name</label>
+            <input type="text" class="form-control" placeholder="Enter last name" value="Pribytkin">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-6">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Enter email" value="gene@uxtensive.com">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-12 profile-photo">
+            <label class="mb-3">Profile photo</label>
+
+            <div class="row">
+              <div class="col prf-img">
+                <img src="assets/images/avatar.png" class="rounded-circle img-fluid" alt="">
+              </div>
+              <div class="col">
+                <a href="#" class="btn btn-gray">Change photo</a>
+                <p class="p-extra-small gray-dark-lighter">JPG, PNG or GIF up to 4Mb</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-6">
+            <label class="mb-2">Password</label>
+            <a href="#" class="btn btn-gray">Change password</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <div class="bottom-bar">
+          <div class="bottom-bar-left">
+            <a href="#" class="btn btn-gray">Save</a>
+            <a href="#" class="btn btn-gray">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END of account-settings-modal -->

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { FormGroup,FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 declare var $:any;
 
 @Component({
@@ -20,7 +23,7 @@ export class CategoriesComponent implements OnInit{
   treeControl = new NestedTreeControl<any>(node => node.subCategories);
   dataSource = new MatTreeNestedDataSource<any>();
 
-  constructor(private accountService: ApiService, private catServices: CategoryService){
+  constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService){
 
 
   }
@@ -31,6 +34,25 @@ export class CategoriesComponent implements OnInit{
     // this.dataSource.data = this.categoryItems;
 
   }
+
+  onSubmit(){
+    console.log(this.myForm.value);
+      // Get the form data
+      this.catServices.addCategories(this.myForm.value).subscribe((data:any)=>{
+        console.log(data);
+      }, error => {
+        console.error('There was an error:', error);
+      });
+  }
+
+  myForm = new FormGroup({
+    name: new FormControl(''),
+    shortText: new FormControl('The world\'s preeminent Pure Therapeutic Ketones made naturally.'),
+    longText: new FormControl(''),
+    media: new FormControl(['']),
+    parent: new FormControl(''),
+    subCategories: new FormControl('')
+  });
 
   hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;
   // hasParent = this.treeControl.getParent(node:any);

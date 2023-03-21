@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import {MatTreeModule} from '@angular/material/tree';
         BrowserAnimationsModule,
         MatButtonModule,
         MatIconModule,
-        MatTreeModule
+        MatTreeModule,
+        ReactiveFormsModule
     ]
 })
 export class CollectionsModule { }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -24,6 +24,19 @@ export class CategoryService {
     const endpoint = 'collections/attribute';
      const url = `${this.apiHost}${endpoint}`;
      return this.http.get(url);
+  }
+
+  addCategories(data:any): Observable<any>{
+    const endpoint = 'collections/category';
+    // const headers = { 'content-type': 'application/json'}
+    // const body=JSON.stringify(data);
+     const url = `${this.apiHost}${endpoint}`;
+     return this.http.post(url,data,{
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Authorization: 'my-auth-token'
+    })
+  });
   }
 
 

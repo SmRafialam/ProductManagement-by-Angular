@@ -9,7 +9,7 @@ import { CollectionsModule } from './collections/collections.module';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomInterceptor } from './custom.interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     CollectionsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule
 
     ],
   providers: [
