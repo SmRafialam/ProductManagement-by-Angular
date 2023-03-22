@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/auth.service';
+declare var $:any;
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.getLocalData();
+   // this.loadScripts();
   }
 
   getLocalData(){
@@ -47,4 +49,13 @@ export class LoginComponent implements OnInit{
 
   //   })
   // }
+
+  private loadScripts() {
+    console.log("custom js")
+    $(".expand-btn").click(function () {
+      console.log("expand")
+      $(".pruvit-cms").toggleClass("expandSideMenu");
+    });
+
+  }
 }

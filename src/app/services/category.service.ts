@@ -28,13 +28,10 @@ export class CategoryService {
 
   addCategories(data:any): Observable<any>{
     const endpoint = 'collections/category';
-    // const headers = { 'content-type': 'application/json'}
-    // const body=JSON.stringify(data);
      const url = `${this.apiHost}${endpoint}`;
      return this.http.post(url,data,{
       headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      Authorization: 'my-auth-token'
     })
   });
   }

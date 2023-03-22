@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -14,6 +14,8 @@ declare var $:any;
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit{
+  isModalVisible:boolean = true;
+
   isParent = (_: number, node: any) => node.subCategories && node.subCategories.length > 0;
   isChild = (_: number, node: any) => !(node.subCategories && node.subCategories.length > 0);
   public isCollapsed = true;
@@ -35,24 +37,26 @@ export class CategoriesComponent implements OnInit{
 
   }
 
-  onSubmit(){
-    console.log(this.myForm.value);
-      // Get the form data
-      this.catServices.addCategories(this.myForm.value).subscribe((data:any)=>{
-        console.log(data);
-      }, error => {
-        console.error('There was an error:', error);
-      });
-  }
-
   myForm = new FormGroup({
     name: new FormControl(''),
     shortText: new FormControl('The world\'s preeminent Pure Therapeutic Ketones made naturally.'),
     longText: new FormControl(''),
-    media: new FormControl(['']),
+    media: new FormControl([]),
     parent: new FormControl(''),
-    subCategories: new FormControl('')
+    subCategories: new FormControl([])
   });
+
+  onSubmit(){
+    console.log(this.myForm.value);
+      // Get the form data
+      this.catServices.addCategories(this.myForm.value).subscribe((res)=>{
+        console.log(res);
+      }, error => {
+        console.error('There was an error:', error);
+      });
+      this.isModalVisible = false;
+
+  }
 
   hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;
   // hasParent = this.treeControl.getParent(node:any);

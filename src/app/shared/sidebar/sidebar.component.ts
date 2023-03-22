@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/auth.service';
 declare var $:any;
@@ -10,9 +11,10 @@ declare var $:any;
 export class SidebarComponent implements OnInit{
 
   userLists: any[] = [];
+  isLoggedIn = false;
 
 
-  constructor(private accountService:ApiService){
+  constructor(private accountService:ApiService, private router:Router){
 
   }
 
@@ -25,6 +27,8 @@ export class SidebarComponent implements OnInit{
 
   doLogout(){
     this.accountService.onLogout();
+    // this.isLoggedIn = false;
+    this.router.navigate(['/login']); // redirect to login page
   }
 
   loadUsers(){

@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
         SidebarComponent
     ],
     exports: [
-        SidebarComponent
+        SidebarComponent,
     ],
     imports: [
         CommonModule,

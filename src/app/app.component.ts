@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { ApiService } from './services/auth.service';
 declare var $:any;
 
@@ -11,7 +12,7 @@ declare var $:any;
 export class AppComponent implements OnInit{
   title = 'PIM';
 
-  constructor(private accountService: ApiService){
+  constructor(private accountService: ApiService,private router: Router){
 
   }
 
@@ -37,4 +38,10 @@ export class AppComponent implements OnInit{
       console.log(err);
     });
   }
+
+  isLoggedIn(): boolean {
+    return localStorage.getItem('access_token') !== null;
+  }
+
+
 }

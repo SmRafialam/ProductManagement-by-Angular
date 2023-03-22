@@ -1,4 +1,3 @@
-<app-sidebar></app-sidebar>
 
 <div class="pruvit-cms">
 
@@ -165,7 +164,7 @@
               </div>
             </div>
 
-            <div class="expander-inner">
+            <div class="expander-inner form-group">
               <div class="expander-header" id="headingSubcategories">
                 <button type="button" class="btn" data-toggle="collapse"
                   data-target="#Subcategories">SUBCATEGORIES</button>
@@ -175,13 +174,7 @@
                 <div class="expander-body">
                   <p class="p-extra-small gray-darker mb-2">Enter subcategories separated by a line break. Use TAB
                     button on your keyboard to add another nesting level.</p>
-                  <textarea class="form-control p-small" rows="6">
-                      KETO//OS NAT®
-                      KETO//OS® Unleashed
-                      KETO//OS® Black Label
-                      KETO//OS® PRØ™
-                      KETO//UP™
-                    </textarea>
+                  <textarea class="form-control p-small" rows="6" formControlName="subCategories"></textarea>
                 </div>
               </div>
             </div>
@@ -191,9 +184,7 @@
           <div class="form-group">
             <p class="p-extra-small gray-darker mb-2">Enter categories separated by a line break. Use TAB button on
               your keyboard to add another nesting level.</p>
-            <textarea class="form-control p-small" rows="10">
-
-            </textarea>
+            <textarea class="form-control p-small" rows="10"></textarea>
           </div>
         </div>
       </div>
@@ -201,7 +192,7 @@
         <div class="bottom-bar">
           <div class="bottom-bar-left">
             <button class="btn btn-brand" type="submit">Save</button>
-            <a href="#" class="btn btn-gray">Cancel</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
