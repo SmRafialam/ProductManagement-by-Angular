@@ -1,5 +1,5 @@
 <div class="pruvit-cms">
-  <!-- <div *ngIf="userLists; else loginTemplate"> -->
+  <!-- <div *ngIf="isLoggedIn"> -->
 
   <aside class="left-sidebar">
     <button  class="btn-add expand-btn"></button>
@@ -64,6 +64,11 @@
             <span class="text">Help</span>
           </a>
         </li>
+        <li class="cms-sidebar-item" *ngIf="!(loginStatus$|async)as loginStatus">
+          <a class="cms-sidebar-link" style="cursor: pointer;" *ngIf="loginStatus" routerLink="/login">
+            login
+          </a>
+        </li>
         <li class="cms-sidebar-item avatar">
           <span class="cms-sidebar-link">
 
@@ -75,7 +80,7 @@
                 </div>
 
                 </span>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" >
                 <a class="dropdown-item" data-target="#accountSettingsModal" data-toggle="modal">Account settings</a>
                 <a class="dropdown-item" (click)="doLogout()">Log out</a>
               </div>
@@ -155,7 +160,7 @@
     </div>
 </div>
 <!-- END of account-settings-modal -->
-<!-- </div> -->
+ <!-- </div> -->
 <!-- <ng-template #loginTemplate>
   <a routerLink="/login"></a>
-</ng-template> -->
+</ng-template>  -->

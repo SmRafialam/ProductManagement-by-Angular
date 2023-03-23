@@ -31,7 +31,7 @@ export class CategoriesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.loadScripts();
+    //this.loadScripts();
     this.loadCategories();
     // this.dataSource.data = this.categoryItems;
 

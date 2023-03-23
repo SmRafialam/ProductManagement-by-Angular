@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
   apiHost!:string;
-  private userData = new BehaviorSubject<any>(null);
+  private loginStatus$ = new BehaviorSubject<boolean>(this.checkLoginStatus());
+  private userData = new BehaviorSubject<any>(localStorage.getItem('user'));
   public currentUser$ = this.userData.asObservable();
 
 
@@ -33,16 +34,24 @@ export class ApiService {
     return authToken !== null? true:false;
    }
 
+   checkLoginStatus():boolean{
+      return false;
+   }
+
+   get ifLoggedIn(){
+    return this.loginStatus$.asObservable();
+   }
+
+
    onLogout(){
     let removeToken = localStorage.removeItem('access_token');
     let removeUser = localStorage.removeItem('user');
     if(removeToken == null){
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
     if(removeUser == null){
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
-
    }
 
    getUserInfo(): Observable<any>{
@@ -59,7 +68,7 @@ export class ApiService {
 
    get UserData$(){
     localStorage.getItem('user');
-    return this.userData;
+    return this.userData.asObservable();
    }
 
    doUserLogin(){
@@ -72,8 +81,6 @@ export class ApiService {
           // emit the user information using the currentUserSubject
           this.userData.next(user);
         })
-
-
   }
 
 

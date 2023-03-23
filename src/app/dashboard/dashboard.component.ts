@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit{
   ngOnInit(): void {
   //  this.loadUsers();
     this.loadCategories();
-    this.loadScripts();
+   // this.loadScripts();
   }
 
   loadUsers(){

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiService } from './services/auth.service';
 declare var $:any;
 
@@ -11,6 +12,8 @@ declare var $:any;
 })
 export class AppComponent implements OnInit{
   title = 'PIM';
+  isLoggedIn:boolean = true;
+  private _userData: any = null;
 
   constructor(private accountService: ApiService,private router: Router){
 
@@ -19,7 +22,14 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.loadScripts();
     this.getUsersData();
+    this.checkLoggedIn();
+
+    this.loginStatus$ = this.accountService.ifLoggedIn;
+    this.userData$ = this.accountService.currentUser$;
   }
+
+  loginStatus$:Observable<boolean> | undefined;
+  userData$:Observable<string> | undefined;
 
 
   private loadScripts() {
@@ -39,9 +49,23 @@ export class AppComponent implements OnInit{
     });
   }
 
-  isLoggedIn(): boolean {
-    return localStorage.getItem('access_token') !== null;
-  }
 
+  // checkLoggedIn(){
+  //    // Check if user is logged in
+  //    if (this.accountService.UserData$) {
+  //     this.isLoggedIn = true;
+  //   } else {
+  //     // Redirect to login page
+  //     this.router.navigate(['/login']);
+  //   }
+  // }
+
+  checkLoggedIn(){
+    this.accountService.currentUser$.subscribe((res)=>{
+      if(res == null){
+        this.isLoggedIn = false;
+      }
+    })
+  }
 
 }
