@@ -19,6 +19,7 @@ export class AttributesComponent implements OnInit{
   }
   constructor(private catServices: CategoryService){
 
+
   }
 
   // private loadScripts() {

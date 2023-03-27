@@ -192,14 +192,14 @@ $(".nav-tabs li").on("click", function () {
 });
 
 //js for tooltip
-// jQuery(document).ready(function () {
-//   console.log("custom js")
-//   $(".expand-btn").click(function () {
-//     console.log("expand")
-//     $(".pruvit-cms").toggleClass("expandSideMenu");
-//   });
-//   jQuery('[data-toggle="tooltip"]').tooltip();
-// });
+jQuery(document).ready(function () {
+  console.log("custom js")
+  $(".expand-btn").click(function () {
+    console.log("expand")
+    $(".pruvit-cms").toggleClass("expandSideMenu");
+  });
+  jQuery('[data-toggle="tooltip"]').tooltip();
+});
 
 
 //js for body content positioning

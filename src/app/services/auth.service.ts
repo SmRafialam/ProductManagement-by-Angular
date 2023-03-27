@@ -46,10 +46,10 @@ export class ApiService {
    onLogout(){
     let removeToken = localStorage.removeItem('access_token');
     let removeUser = localStorage.removeItem('user');
-    if(removeToken == null){
+    if(!this.isLoggedIn && removeToken == null){
       this.router.navigate(['/login']);
     }
-    if(removeUser == null){
+    if(!this.isLoggedIn && removeUser == null){
       this.router.navigate(['/login']);
     }
    }
@@ -68,12 +68,11 @@ export class ApiService {
 
    get UserData$(){
     localStorage.getItem('user');
-    return this.userData.asObservable();
+    return this.userData;
    }
 
    doUserLogin(){
         // authenticate the user and retrieve their information
-
         this.UserData$.subscribe((user)=>{
           // store the user information in localStorage
           localStorage.setItem('currentUser$', JSON.stringify(user));
@@ -81,7 +80,23 @@ export class ApiService {
           // emit the user information using the currentUserSubject
           this.userData.next(user);
         })
-  }
+   }
+
+  //  checkLoginStatus(): boolean {
+  //   const authToken = localStorage.getItem('access_token');
+
+  //   if (authToken) {
+  //     // Decode the token to get the expiration date
+  //     const tokenExpirationDate = jwt_decode(authToken).exp;
+
+  //     // Check if the token is still valid
+  //     const currentDate = new Date().getTime() / 1000; // Convert to seconds
+  //     return tokenExpirationDate >= currentDate;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
 
 
 
@@ -94,7 +109,6 @@ export class ApiService {
    getRefreshToken(): Observable<any>{
     const url = 'https://pim-nest.vercel.app/api/v1/auth/access-token';
     return this.http.get(url);
-
   }
 
 }

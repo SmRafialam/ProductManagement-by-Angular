@@ -12,7 +12,6 @@ const routes: Routes = [
   { path:'collections/attributes', component:AttributesComponent, canActivate:[AuthguardGuard]},
   { path:'collections/categories', component:CategoriesComponent, canActivate:[AuthguardGuard]},
   { path: '**', component: DashboardComponent }
-
 ];
 
 @NgModule({

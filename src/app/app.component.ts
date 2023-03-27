@@ -17,19 +17,33 @@ export class AppComponent implements OnInit{
 
   constructor(private accountService: ApiService,private router: Router){
 
+    //this.router.navigate(['/login']);
+
   }
 
   ngOnInit(): void {
-    this.loadScripts();
+    // this.loadScripts();
     this.getUsersData();
-    this.checkLoggedIn();
+    //this.checkLoggedIn();
 
-    this.loginStatus$ = this.accountService.ifLoggedIn;
-    this.userData$ = this.accountService.currentUser$;
+    // this.loginStatus$ = this.accountService.ifLoggedIn;
+    // this.userData$ = this.accountService.currentUser$;
+
+    this.accountService.currentUser$.subscribe((userData) => {
+      console.log(userData);
+      if (userData === null) {
+        // User is not logged in
+        this.isLoggedIn = false;
+
+      } else {
+        // User is logged in
+        this.isLoggedIn = true;
+      }
+    });
   }
 
-  loginStatus$:Observable<boolean> | undefined;
-  userData$:Observable<string> | undefined;
+  // loginStatus$:Observable<boolean> | undefined;
+  //  userData$:Observable<string>    | undefined;
 
 
   private loadScripts() {
@@ -43,11 +57,15 @@ export class AppComponent implements OnInit{
   getUsersData(){
     this.accountService.getUserInfo().subscribe((data:any)=>{
       return this.accountService.setUserData(data.result);
-    },(err:HttpErrorResponse)=>{
-      'handle your error here'
-      console.log(err);
     });
   }
+
+  // getUserInfo(){
+  //   const localUser = localStorage.getItem('user');
+  //   if(localUser){
+  //     this.accountService.setUserData(JSON.parse(localUser))
+  //   }
+  // }
 
 
   // checkLoggedIn(){

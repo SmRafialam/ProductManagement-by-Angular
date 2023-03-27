@@ -13,9 +13,13 @@ export class AuthguardGuard implements CanActivate {
   }
 
   canActivate(
+
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(!this.accountService.isLoggedIn){
+      console.log('AuthGuard called');
+
+      const currentUser = this.accountService.currentUser$;
+      if(!this.accountService.isLoggedIn && !currentUser){
         //this.accountService.isLoggedIn
         window.alert("Access not allowed!");
         this.router.navigate(['/login']);

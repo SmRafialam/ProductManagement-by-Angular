@@ -18,16 +18,17 @@ export class DashboardComponent implements OnInit{
   }
 
   ngOnInit(): void {
-  //  this.loadUsers();
-    this.loadCategories();
-   // this.loadScripts();
+   this.loadUsers();
+   this.loadCategories();
+  // this.loadScripts();
+   console.log("Dashboard loaded!!!");
   }
 
   loadUsers(){
-    this.accountService.getUserInfo().subscribe((data:any)=>{
-      console.log(data.result);
-      //this.userLists = data.result;
-    })
+      this.accountService.getUserInfo().subscribe((data:any)=>{
+        return this.accountService.setUserData(data.result);
+      });
+
   }
 
   loadCategories(){
