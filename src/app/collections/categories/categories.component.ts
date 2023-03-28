@@ -6,6 +6,7 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { FormGroup,FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+
 declare var $:any;
 
 @Component({
@@ -24,6 +25,7 @@ export class CategoriesComponent implements OnInit{
   public root: any[] = [];
   treeControl = new NestedTreeControl<any>(node => node.subCategories);
   dataSource = new MatTreeNestedDataSource<any>();
+  snackBar: any;
 
   constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService){
 
@@ -34,7 +36,10 @@ export class CategoriesComponent implements OnInit{
     //this.loadScripts();
     this.loadCategories();
     // this.dataSource.data = this.categoryItems;
-
+    this.catServices.getCategories().subscribe((categories: any) => {
+      this.dataSource.data = categories;
+      console.log(categories);
+    });
   }
 
   myForm = new FormGroup({
@@ -125,5 +130,15 @@ export class CategoriesComponent implements OnInit{
   },[])
 }
 
-
+onDelete(category: any): void {
+  if(category.children && category.children.length > 0) {
+    category.children.forEach((child:any) => this.onDelete(child));
+  }
+  this.dataSource.data = this.dataSource.data.filter(node => node.id !== category.id);
+  this.catServices.deleteCategory(category.id).subscribe();
 }
+}
+
+
+
+

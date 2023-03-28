@@ -11,7 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -32,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatButtonModule,
         MatIconModule,
         MatTreeModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatMenuModule
     ]
 })
 export class CollectionsModule { }

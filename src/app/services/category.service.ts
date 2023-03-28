@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryService {
   apiHost: string;
+  categoryItems: any;
 
   constructor(private http: HttpClient) {
     this.apiHost = environment.apiHost;
@@ -34,6 +35,15 @@ export class CategoryService {
       'Content-Type':  'application/json',
     })
   });
+  }
+
+  deleteCategory(id:any) :Observable<any>{
+    // /api/v1/collections/category/{id}
+    const apiUrl = '/api/v1/collections/category/{id}';;
+    const url = `${apiUrl}${id}`;
+
+    return this.http.delete(url);
+
   }
 
 

@@ -72,3 +72,25 @@
 /* .category .list.expander-list > span:not(.child) {
   font-weight: bold;
 } */
+
+
+/* .parent-node {
+  position: relative;
+}
+
+.parent-node .more {
+  position: absolute;
+  right: 30px;
+  top: 0;
+  z-index: 1;
+} */
+
+.delete-button {
+  margin-left: auto;
+  visibility: hidden;
+  color: rgba(215, 0, 0, 0.992);
+}
+
+.parent-node:hover .delete-button {
+  visibility: visible;
+}
