@@ -36,10 +36,7 @@ export class CategoriesComponent implements OnInit{
     //this.loadScripts();
     this.loadCategories();
     // this.dataSource.data = this.categoryItems;
-    this.catServices.getCategories().subscribe((categories: any) => {
-      this.dataSource.data = categories;
-      console.log(categories);
-    });
+    this.getData();
   }
 
   myForm = new FormGroup({
@@ -130,13 +127,45 @@ export class CategoriesComponent implements OnInit{
   },[])
 }
 
-onDelete(category: any): void {
-  if(category.children && category.children.length > 0) {
-    category.children.forEach((child:any) => this.onDelete(child));
-  }
-  this.dataSource.data = this.dataSource.data.filter(node => node.id !== category.id);
-  this.catServices.deleteCategory(category.id).subscribe();
+getData(){
+    this.catServices.getCategories().subscribe((categories: any) => {
+    this.dataSource.data = categories;
+    console.log(categories);
+  });
 }
+
+
+// onDelete(category: any): void {
+//   if(category.children && category.children.length > 0) {
+//     category.children.forEach((child:any) => this.onDelete(child));
+//   }
+//   if (Array.isArray(this.dataSource.data)) {
+//     this.dataSource.data = this.dataSource.data.filter(node => node.id !== category.id);
+//   }
+
+//   this.catServices.deleteCategory(category.id).subscribe();
+// }
+
+onDelete(catId: any) {
+  // console.log(catId);
+  // this.catServices.deleteCategory(catId).subscribe(data=>{
+  //   this.getData();
+  // })
+  const confirmation = confirm(`Are you sure you want to delete id: ${catId}?`);
+  if (confirmation) {
+    this.catServices.deleteCategory(catId).subscribe(data => {
+      this.getData();
+      // this.dataSource.data = this.dataSource.data.filter(item => item.id !== catId);
+      console.log("Category deleted successfully!!")
+
+    }, error => {
+      console.log('Error deleting category:', error);
+    });
+  }
+}
+
+
+
 }
 
 

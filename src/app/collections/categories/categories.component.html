@@ -36,7 +36,7 @@
 
                 <mat-tree-node *matTreeNodeDef="let cat; let i=index" class="list expander-list parent-node" matTreeNodeToggle matTreeNodePadding>
                   <span class="btn arrow collapsed" [class.parent]="isParent">{{cat.name}}</span>
-                  <button mat-icon-button class="delete-button" *ngIf="isParent" matTooltip="Delete" (click)="onDelete(cat)">
+                  <button mat-icon-button class="delete-button" *ngIf="isParent" matTooltip="Delete" (click)="onDelete(cat.id)">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </mat-tree-node>
@@ -53,8 +53,6 @@
                   <div [class.example-tree-invisible]="!treeControl.isExpanded(cat)" role="group">
                     <ng-container matTreeNodeOutlet></ng-container>
                   </div>
-
-
                 </mat-nested-tree-node>
               </mat-tree>
             </div>
