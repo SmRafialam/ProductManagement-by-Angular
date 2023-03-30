@@ -85,12 +85,43 @@
   z-index: 1;
 } */
 
-.delete-button {
+#delete-btn {
   margin-left: auto;
   visibility: hidden;
   color: rgba(215, 0, 0, 0.992);
 }
 
-.parent-node:hover .delete-button {
+.parent-node:hover #delete-btn {
   visibility: visible;
 }
+
+.edit-button {
+  margin-left: auto;
+  padding-left: 420px;
+  visibility: hidden;
+}
+.parent-node:hover .edit-button {
+  visibility: visible;
+}
+
+
+
+/* .more {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+}
+
+.more:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  cursor: pointer;
+} */

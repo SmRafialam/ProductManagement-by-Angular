@@ -38,16 +38,7 @@ export class CategoryService {
   }
 
   deleteCategory(id:string) :Observable<any>{
-    // const httpHeaders = new HttpHeaders({
-    //   'Content-Type': 'application/json'
-    // });
-    // const options = {
-    //   headers: httpHeaders
-    // };
 
-    // const url = `/api/v1/collections/category/${id}`;
-
-    // return this.http.delete(url,options);
     const endpoint = 'collections/category/';
     const url = `${this.apiHost}${endpoint}`+id;
     return this.http.delete(url,{

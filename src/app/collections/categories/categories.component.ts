@@ -26,6 +26,7 @@ export class CategoriesComponent implements OnInit{
   treeControl = new NestedTreeControl<any>(node => node.subCategories);
   dataSource = new MatTreeNestedDataSource<any>();
   snackBar: any;
+  deleteButton:any = document.querySelector('.delete-button');
 
   constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService){
 
@@ -70,31 +71,6 @@ export class CategoriesComponent implements OnInit{
       //this.categoryItems = data.result;
       this.categoryItems = this.CategoryData(data.result);
       console.log(this.categoryItems);
-        //Create root for top-level node(s)
-        // Cache found parent index
-    //     const map: any[] = [];
-    //     data.result.forEach((node: any) => {
-    //       // No parentId means top level
-    //       if (!node.parent) return this.root.push(node);
-
-    //       // Insert node as child of parent in flat array
-    //       let parentIndex = map[node.parent];
-    //       if (typeof parentIndex !== "string") {
-    //         parentIndex = data.result.findIndex((el:any) => el.id === node.parent);
-    //         map[node.parent] = parentIndex;
-    //       }
-
-    //       if (!data.result[parentIndex].subCategory) {
-    //         return data.result[parentIndex].subCategory = [node];
-    //       }
-
-    //       data.result[parentIndex].subCategory.push(node);
-    //     });
-
-    //     console.log(this.root);
-
-
-
     })
 
   }
@@ -135,26 +111,22 @@ getData(){
 }
 
 
-// onDelete(category: any): void {
-//   if(category.children && category.children.length > 0) {
-//     category.children.forEach((child:any) => this.onDelete(child));
-//   }
-//   if (Array.isArray(this.dataSource.data)) {
-//     this.dataSource.data = this.dataSource.data.filter(node => node.id !== category.id);
-//   }
-
-//   this.catServices.deleteCategory(category.id).subscribe();
-// }
 
 onDelete(catId: any) {
-  // console.log(catId);
-  // this.catServices.deleteCategory(catId).subscribe(data=>{
-  //   this.getData();
-  // })
+
+  // const deleteBtn:any = document.getElementById("delete-btn");
+
+  // const deleteModal:any = document.getElementById("deleteModal");
+
+  // const deleteItem =  deleteBtn.addEventListener("click", () => {
+  //   deleteModal.style.display = "block";
+  // });
+
   const confirmation = confirm(`Are you sure you want to delete id: ${catId}?`);
   if (confirmation) {
     this.catServices.deleteCategory(catId).subscribe(data => {
       this.getData();
+      // this.deleteModal();
       // this.dataSource.data = this.dataSource.data.filter(item => item.id !== catId);
       console.log("Category deleted successfully!!")
 
@@ -163,10 +135,26 @@ onDelete(catId: any) {
     });
   }
 }
+// deleteModal(){
+
+// $('#delete-btn').on('shown.bs.modal', function () {
+//   $('#deleteModal').trigger('focus')
+// })
+// }
+// deleteModal(){
+//   $(document).ready(function() {
+//     console.log('deleteModal');
+//     $('#delete-btn').click(function() {
+//       $('#deleteModal').modal('show');
+//     });
+//   });
+// }
 
 
 
-}
+
+
+ }
 
 
 

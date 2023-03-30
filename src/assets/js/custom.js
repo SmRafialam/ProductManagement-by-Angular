@@ -41,6 +41,11 @@ $('.filters-menu .dropdown-menu').on('click', function(e) {
   }
 });
 
+$(document).ready(function() {
+  $('#delete-btn').click(function() {
+    $('#deleteModal').modal('show');
+  });
+});
 /*----------Reviews-----------*/
 
 //js for Search-input
@@ -199,7 +204,16 @@ jQuery(document).ready(function () {
     $(".pruvit-cms").toggleClass("expandSideMenu");
   });
   jQuery('[data-toggle="tooltip"]').tooltip();
+
 });
+
+// $(document).ready(function() {
+//   // Add click event listener to delete button
+//   $('#delete-btn').click(function() {
+//     // Show the modal
+//     $('#deleteModal').modal('show');
+//   });
+// });
 
 
 //js for body content positioning

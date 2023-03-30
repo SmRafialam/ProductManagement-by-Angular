@@ -36,9 +36,13 @@
 
                 <mat-tree-node *matTreeNodeDef="let cat; let i=index" class="list expander-list parent-node" matTreeNodeToggle matTreeNodePadding>
                   <span class="btn arrow collapsed" [class.parent]="isParent">{{cat.name}}</span>
-                  <button mat-icon-button class="delete-button" *ngIf="isParent" matTooltip="Delete" (click)="onDelete(cat.id)">
+                  <button mat-icon-button class="edit-button" id="edit-btn" *ngIf="isParent" matTooltip="Edit" data-target="#editModal" data-toggle="modal">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button  id="delete-btn" *ngIf="isParent" matTooltip="Delete" (click)="onDelete(cat.id)" data-target="#deleteModal" data-toggle="modal">
                     <mat-icon>delete</mat-icon>
                   </button>
+
                 </mat-tree-node>
 
                 <mat-nested-tree-node *matTreeNodeDef="let cat; when: hasChild" class="item child-node">
@@ -285,7 +289,7 @@
 </div>
 <!-- END of edit-category-modal -->
 
-<div id="deleteModal" class="modal fade delete-modal" tabindex="-1">
+<!-- <div id="deleteModal" class="modal fade delete-modal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
@@ -297,7 +301,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- END of deleteModal -->
 
 <div id="accountSettingsModal" class="modal fade right account-settings-modal" tabindex="-1">
@@ -366,3 +370,26 @@
   </div>
 </div>
 <!-- END of account-settings-modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
