@@ -32,12 +32,20 @@
               <p>No categories added</p>
             </div>
             <div class="cms-body-inner-content accordion expander expander-body " id="accordionOne">
+              <!-- <div class="expander-inner category" *ngFor="let cat of categoryItems">
+                <div class="expander-header" id="headingFour" *ngIf="'header'+cat.id">
+                  <div class="item btn-item">
+                    <div class="inner-cont">
+                    <span class="btn arrow collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true">{{ cat.name }}</span>
+                  </div>
+
+                    <app-recursive [subCategories]="cat.subCategories"></app-recursive> -->
               <mat-tree [dataSource]="categoryItems" [treeControl]="treeControl" class="example-tree category">
 
                 <mat-tree-node *matTreeNodeDef="let cat; let i=index" class="list expander-list parent-node" matTreeNodeToggle matTreeNodePadding>
                   <span class="btn arrow collapsed" [class.parent]="isParent">{{cat.name}}</span>
-                  <button mat-icon-button class="edit-button" id="edit-btn" *ngIf="isParent" matTooltip="Edit" data-target="#editModal" data-toggle="modal">
-                    <mat-icon>edit</mat-icon>
+                  <button mat-icon-button class="edit-button" id="edit-btn" *ngIf="isParent" matTooltip="Edit" data-target="#addCategoryModal" data-toggle="modal">
+                    <mat-icon>add_circle</mat-icon>
                   </button>
                   <button mat-icon-button  id="delete-btn" *ngIf="isParent" matTooltip="Delete" (click)="onDelete(cat.id)" data-target="#deleteModal" data-toggle="modal">
                     <mat-icon>delete</mat-icon>
@@ -59,8 +67,11 @@
                   </div>
                 </mat-nested-tree-node>
               </mat-tree>
+                  </div>
+                </div>
+              <!-- </div>
             </div>
-           </div>
+           </div> -->
          </figure>
        </article>
     </section>
@@ -218,9 +229,7 @@
         <h5 class="modal-title">Edit category</h5>
       </div>
 
-      <div class="modal-body">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Add Category" value="Ketones" />
+      ceholder="Add Category" value="Ketones" />
         </div>
         <div class="description">
           <h1 class="p-bold description-heading">Descriptions</h1>
@@ -285,8 +294,8 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  <!-- </div>
+</div> -->
 <!-- END of edit-category-modal -->
 
 <!-- <div id="deleteModal" class="modal fade delete-modal" tabindex="-1">
@@ -374,7 +383,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true" *ngFor="let cat of categoryItems;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -388,7 +397,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(cat.id)">Delete</button>
       </div>
     </div>
   </div>

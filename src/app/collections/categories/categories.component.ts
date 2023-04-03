@@ -5,6 +5,8 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { FormGroup,FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 
 declare var $:any;
@@ -28,7 +30,7 @@ export class CategoriesComponent implements OnInit{
   snackBar: any;
   deleteButton:any = document.querySelector('.delete-button');
 
-  constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService){
+  constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService,public dialog: MatDialog){
 
 
   }
@@ -54,6 +56,9 @@ export class CategoriesComponent implements OnInit{
       // Get the form data
       this.catServices.addCategories(this.myForm.value).subscribe((res)=>{
         console.log(res);
+        this.categoryItems.push(res);
+        this.dataSource.data = this.categoryItems
+        this.categoryItems = [...this.categoryItems]
       }, error => {
         console.error('There was an error:', error);
       });
@@ -114,43 +119,30 @@ getData(){
 
 onDelete(catId: any) {
 
-  // const deleteBtn:any = document.getElementById("delete-btn");
-
-  // const deleteModal:any = document.getElementById("deleteModal");
-
-  // const deleteItem =  deleteBtn.addEventListener("click", () => {
-  //   deleteModal.style.display = "block";
-  // });
-
   const confirmation = confirm(`Are you sure you want to delete id: ${catId}?`);
   if (confirmation) {
     this.catServices.deleteCategory(catId).subscribe(data => {
-      this.getData();
-      // this.deleteModal();
-      // this.dataSource.data = this.dataSource.data.filter(item => item.id !== catId);
-      console.log("Category deleted successfully!!")
+      //this.getData();
+      this.categoryItems = this.categoryItems.filter(item => item.id !== catId);
+
+      console.log("Category deleted successfully!!");
 
     }, error => {
       console.log('Error deleting category:', error);
     });
   }
 }
-// deleteModal(){
-
-// $('#delete-btn').on('shown.bs.modal', function () {
-//   $('#deleteModal').trigger('focus')
-// })
-// }
-// deleteModal(){
-//   $(document).ready(function() {
-//     console.log('deleteModal');
-//     $('#delete-btn').click(function() {
-//       $('#deleteModal').modal('show');
-//     });
-//   });
-// }
 
 
+openDeleteModal() {
+
+  const dialogRef = this.dialog.open(DeleteModalComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    // Handle the modal result if needed
+    console.log(result);
+  });
+}
 
 
 
