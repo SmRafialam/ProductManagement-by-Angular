@@ -15,6 +15,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteModalComponent } from './categories/delete-modal/delete-modal.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -40,7 +44,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         ReactiveFormsModule,
         MatMenuModule,
         MatDialogModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatInputModule,
+        MatExpansionModule,
+        MatProgressBarModule,
+        MatTabsModule
 
     ],
     entryComponents: [

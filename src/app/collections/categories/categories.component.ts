@@ -38,8 +38,9 @@ export class CategoriesComponent implements OnInit{
   ngOnInit(): void {
     //this.loadScripts();
     this.loadCategories();
-    // this.dataSource.data = this.categoryItems;
+    //this.dataSource.data = this.categoryItems;
     this.getData();
+
   }
 
   myForm = new FormGroup({
@@ -51,14 +52,19 @@ export class CategoriesComponent implements OnInit{
     subCategories: new FormControl([])
   });
 
+
+
   onSubmit(){
     console.log(this.myForm.value);
       // Get the form data
       this.catServices.addCategories(this.myForm.value).subscribe((res)=>{
-        console.log(res);
+
         this.categoryItems.push(res);
-        this.dataSource.data = this.categoryItems
-        this.categoryItems = [...this.categoryItems]
+        this.loadCategories();
+        console.log("Category added successfully!!");
+
+        // this.dataSource.data = this.categoryItems;
+        // this.categoryItems = [...this.categoryItems]
       }, error => {
         console.error('There was an error:', error);
       });
