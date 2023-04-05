@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { FormGroup,FormControl } from '@angular/forms';
+import { FormGroup,FormControl, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
@@ -30,7 +30,7 @@ export class CategoriesComponent implements OnInit{
   snackBar: any;
   deleteButton:any = document.querySelector('.delete-button');
 
-  constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService,public dialog: MatDialog){
+  constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService){
 
 
   }
@@ -42,6 +42,8 @@ export class CategoriesComponent implements OnInit{
     this.getData();
 
   }
+
+
 
   myForm = new FormGroup({
     name: new FormControl(''),
@@ -125,8 +127,8 @@ getData(){
 
 onDelete(catId: any) {
 
-  const confirmation = confirm(`Are you sure you want to delete id: ${catId}?`);
-  if (confirmation) {
+  // const confirmation = confirm(`Are you sure you want to delete id: ${catId}?`);
+  // if (confirmation) {
     this.catServices.deleteCategory(catId).subscribe(data => {
       //this.getData();
       this.categoryItems = this.categoryItems.filter(item => item.id !== catId);
@@ -136,21 +138,31 @@ onDelete(catId: any) {
     }, error => {
       console.log('Error deleting category:', error);
     });
-  }
+  // }
 }
 
 
-openDeleteModal() {
+// openDeleteModal() {
 
-  const dialogRef = this.dialog.open(DeleteModalComponent);
+//   const dialogRef = this.dialog.open(DeleteModalComponent);
 
-  dialogRef.afterClosed().subscribe(result => {
-    // Handle the modal result if needed
-    console.log(result);
-  });
-}
+//   dialogRef.afterClosed().subscribe(result => {
+//     // Handle the modal result if needed
+//     console.log(result);
+//   });
+// }
 
 
+// confirmDelete() {
+//   const dialogRef = this.dialog.open(DeleteModalComponent);
+
+//   dialogRef.afterClosed().subscribe((result) => {
+//     if (result === true) {
+//       // Perform delete operation
+//       console.log('Item deleted');
+//     }
+//   });
+// }
 
  }
 

@@ -1,24 +1,25 @@
 <ul class="list">
   <li class="item" *ngFor="let subCategory of subCategories">
-    <div class="inner-cont" *ngIf="subCategory.subCategories.length > 0; else nosubCategories">
+    <div class="inner-cont category" *ngIf="subCategory.subCategories.length > 0; else nosubCategories">
       <div class="expander-header" [id]="'heading' + subCategory.id">
         <div class="item btn-item">
           <div class="inner-cont">
             <span class="btn arrow collapsed" [attr.data-target]="'#collapse' + subCategory.id" data-toggle="collapse"
-              aria-expanded="true">{{ subCategory.name }}</span>
+              aria-expanded="false">{{ subCategory.name }}</span>
           </div>
         </div>
       </div>
     </div>
     <ng-template #nosubCategories>
       <div class="inner-cont">
-        <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">{{subCategory.name}}</a>
+        <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="collapse">{{subCategory.name}}</a>
       </div>
     </ng-template>
 
-    <ng-container *ngIf="subCategory.subCategories && subCategory.subCategories.length > 0">
-      <app-recursive [subCategories]="subCategory.subCategories"></app-recursive>
-    </ng-container>
+    <!-- <ng-container *ngIf="subCategory.subCategories && subCategory.subCategories.length > 0"> -->
+      <div [id]="'collapse'+subCategory.id" class="collapse" [attr.aria-labelledby]="'heading'+ subCategory.id">
+        <app-recursive [subCategories]="subCategory.subCategories"></app-recursive>
+      </div>
     <div class="more d-flex">
       <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
         <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>

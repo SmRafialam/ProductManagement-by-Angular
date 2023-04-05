@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -11,12 +12,21 @@ export class DeleteModalComponent implements OnInit{
   dataSource = new MatTreeNestedDataSource<any>();
   categoryItems : any[] = [];
 
-  constructor(private catServices: CategoryService){
+  constructor(private catServices: CategoryService,public dialogRef: MatDialogRef<DeleteModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,private dialog: MatDialog){
 
   }
 
   ngOnInit(): void {
 
+    const dialogRef = this.dialog.open(DeleteModalComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        // Perform delete operation
+        console.log('Item deleted');
+      }
+    });
   }
 
   loadCategories(){

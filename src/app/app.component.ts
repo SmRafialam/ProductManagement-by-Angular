@@ -34,6 +34,7 @@ export class AppComponent implements OnInit{
       if (userData === null) {
         // User is not logged in
         this.isLoggedIn = false;
+        this.checkLoggedIn();
 
       } else {
         // User is logged in
@@ -42,8 +43,6 @@ export class AppComponent implements OnInit{
     });
   }
 
-  // loginStatus$:Observable<boolean> | undefined;
-  //  userData$:Observable<string>    | undefined;
 
 
   private loadScripts() {

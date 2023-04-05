@@ -35,9 +35,8 @@ export class SidebarComponent implements OnInit{
     this.accountService.onLogout();
     this.userLists == null;
     // this.isLoggedIn = false;
-    this.router.navigate(['/login']); // redirect to login page\
+    this.router.navigate(['/login']); // redirect to login page
     console.log("Successfully Logged Out!!");
-
   }
 
   loadUsers(){
