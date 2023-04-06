@@ -4009,7 +4009,7 @@ input[type="number"] {
   color: rgba(0, 0, 0, 0.94);
   font-size: 16px;
   line-height: 24px;
-  /* font-weight: 700 !important; */
+  font-weight: 700 !important;
   padding: 4px 0 4px 20px;
   width: 100%;
   text-align: left;
@@ -4070,7 +4070,7 @@ input[type="number"] {
 }
 
 .pruvit-cms .cms-body-content .category .list.subcategory .item::before {
-  /*border-left: 3px solid rgba(0, 87, 249, 0.56);*/
+  border-left: 3px solid rgba(0, 87, 249, 0.56);
 }
 
 .pruvit-cms .cms-body-content .category .list.subcategory .inner-cont::before {
@@ -4121,8 +4121,8 @@ input[type="number"] {
 }
 
 .pruvit-cms .cms-body-content .category .item .inner-cont:hover::before {
-  /*box-shadow: inset 3px 0px 0px rgba(101, 150, 240, 0.48);
-              background: #f7f7f7;*/
+  box-shadow: inset 3px 0px 0px rgba(101, 150, 240, 0.48);
+              background: #f7f7f7;
 }
 
 .pruvit-cms .cms-body-content .category .item .inner-cont > .dropdown-item:hover {

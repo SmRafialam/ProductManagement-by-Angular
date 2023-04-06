@@ -51,27 +51,39 @@ export class CategoriesComponent implements OnInit{
     longText: new FormControl(''),
     media: new FormControl([]),
     parent: new FormControl(''),
-    subCategories: new FormControl([])
+    subCategories: new FormArray([])
   });
 
 
 
-  onSubmit(){
-    console.log(this.myForm.value);
-      // Get the form data
-      this.catServices.addCategories(this.myForm.value).subscribe((res)=>{
-
-        this.categoryItems.push(res);
-        this.loadCategories();
-        console.log("Category added successfully!!");
-
-        // this.dataSource.data = this.categoryItems;
-        // this.categoryItems = [...this.categoryItems]
-      }, error => {
-        console.error('There was an error:', error);
-      });
-      this.isModalVisible = false;
-
+  onSubmit() {
+    const formData = this.myForm.value;
+    const subCategories = formData.subCategories?.map((category: any) => {
+      return {
+        name: category.name,
+        shortText: category.shortText,
+        longText: category.longText,
+        media: category.media,
+        parent: formData.name,
+        subCategories: category.subCategories,
+      };
+    });
+    const category = {
+      name: formData.name,
+      shortText: formData.shortText,
+      longText: formData.longText,
+      media: formData.media,
+      parent: formData.parent,
+      subCategories,
+    };
+    this.catServices.addCategories(category).subscribe((res) => {
+      this.categoryItems.push(res);
+      this.loadCategories();
+      console.log('Category added successfully!!');
+    }, error => {
+      console.error('There was an error:', error);
+    });
+    this.isModalVisible = false;
   }
 
   hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;

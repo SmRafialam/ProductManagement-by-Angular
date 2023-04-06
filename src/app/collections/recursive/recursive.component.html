@@ -7,7 +7,7 @@
             <span class="btn arrow collapsed" [attr.data-target]="'#collapse' + subCategory.id" data-toggle="collapse"
               aria-expanded="false">{{ subCategory.name }}</span>
           </div>
-        </div>
+      </div>
       </div>
     </div>
     <ng-template #nosubCategories>
@@ -16,23 +16,46 @@
       </div>
     </ng-template>
 
+
     <!-- <ng-container *ngIf="subCategory.subCategories && subCategory.subCategories.length > 0"> -->
       <div [id]="'collapse'+subCategory.id" class="collapse" [attr.aria-labelledby]="'heading'+ subCategory.id">
         <app-recursive [subCategories]="subCategory.subCategories"></app-recursive>
       </div>
-    <div class="more d-flex">
-      <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
-        <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
-      </span>
-      <div class="dropdown">
-        <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <i class="fal fa-ellipsis-v"></i>
+
+      <div class="more d-flex">
+        <span class="icon-hover" data-toggle="tooltip" data-placement="top" title="New subcategory">
+          <i class="icon-plus-circle" data-target="#addCategoryModal" data-toggle="modal"></i>
         </span>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#" data-target="#editCategoryModal" data-toggle="modal">Edit</a>
-          <a class="dropdown-item" href="#" data-target="#deleteModal" data-toggle="modal">Delete</a>
+        <div class="dropdown">
+          <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <i class="fal fa-ellipsis-v"></i>
+          </span>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" [attr.data-target]="'#editCategoryModal'+subCategory.id" data-toggle="modal">Edit</a>
+            <a class="dropdown-item" href="#" [attr.data-target]="'#deleteModal'+subCategory.id" data-toggle="modal">Delete</a>
+          </div>
         </div>
       </div>
-    </div>
   </li>
 </ul>
+
+<!--Delete Modal -->
+<div class="modal fade" [id]="'deleteModal'+subCategory.id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true" *ngFor="let subCategory of subCategories;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete this category?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p >The category contains 0 products.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(subCategory.id)" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

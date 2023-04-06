@@ -203,7 +203,7 @@ jQuery(document).ready(function () {
     console.log("expand")
     $(".pruvit-cms").toggleClass("expandSideMenu");
   });
-  jQuery('[data-toggle="tooltip"]').tooltip();
+  //jQuery('[data-toggle="tooltip"]').tooltip();
 
 });
 

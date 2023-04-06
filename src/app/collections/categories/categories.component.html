@@ -1,7 +1,5 @@
 
 <div class="pruvit-cms">
-
-
   <aside class="cms-body">
     <header class="cms-body-header">
       <div class="inner">
@@ -36,7 +34,12 @@
                 <div class="expander-header" [id]="'header'+cat.id">
                   <div class="item btn-item">
                     <div class="inner-cont">
-                    <span class="btn arrow collapsed" data-toggle="collapse" [attr.data-target]="'#collapse'+cat.id" aria-expanded="false">{{ cat.name }}</span>
+                      <ng-container *ngIf="cat.subCategories && cat.subCategories.length > 0">
+                        <span class="btn arrow collapsed" data-toggle="collapse" [attr.data-target]="'#collapse'+cat.id" aria-expanded="false">{{ cat.name }}</span>
+                      </ng-container>
+                      <ng-container *ngIf="!(cat.subCategories && cat.subCategories.length > 0)">
+                        <span class="btn">{{ cat.name }}</span>
+                      </ng-container>
                     </div>
 
                   <ng-template #nosubCategories>
@@ -218,7 +221,7 @@
                 <div class="expander-body">
                   <p class="p-extra-small gray-darker mb-2">Enter subcategories separated by a line break. Use TAB
                     button on your keyboard to add another nesting level.</p>
-                  <textarea class="form-control p-small" rows="6" formControlName="subCategories"></textarea>
+                  <textarea class="form-control p-small" rows="6" formArrayName="subCategories"></textarea>
                 </div>
               </div>
             </div>
@@ -433,7 +436,7 @@
 
 
 
-<!-- Modal -->
+<!-- Delete Modal -->
 <div class="modal fade" [id]="'deleteModal'+cat.id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true" *ngFor="let cat of categoryItems;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
