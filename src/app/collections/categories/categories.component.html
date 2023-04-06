@@ -165,7 +165,8 @@
                       site catalog</p>
 
                     <textarea class="form-control" formControlName="shortText"
-                      rows="3">The world's preeminent Pure Therapeutic Ketones made naturally.</textarea>
+                      rows="3">The world's preeminent Pure Therapeutic Ketones made naturally.
+                    </textarea>
                   </div>
 
                   <div class="form-group">
@@ -214,9 +215,9 @@
             <div class="expander-inner form-group">
               <div class="expander-header" id="headingSubcategories">
                 <button type="button" class="btn" data-toggle="collapse"
-                  data-target="#Subcategories">SUBCATEGORIES</button>
+                [attr.data-target]="'#Subcategories'">SUBCATEGORIES</button>
               </div>
-              <div id="Subcategories" class="collapse" aria-labelledby="headingSubcategories"
+              <div [id]="'Subcategories'" class="collapse" aria-labelledby="headingSubcategories"
                 data-parent="#accordionExample">
                 <div class="expander-body">
                   <p class="p-extra-small gray-darker mb-2">Enter subcategories separated by a line break. Use TAB

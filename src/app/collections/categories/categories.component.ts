@@ -57,26 +57,26 @@ export class CategoriesComponent implements OnInit{
 
 
   onSubmit() {
-    const formData = this.myForm.value;
-    const subCategories = formData.subCategories?.map((category: any) => {
-      return {
-        name: category.name,
-        shortText: category.shortText,
-        longText: category.longText,
-        media: category.media,
-        parent: formData.name,
-        subCategories: category.subCategories,
-      };
-    });
-    const category = {
-      name: formData.name,
-      shortText: formData.shortText,
-      longText: formData.longText,
-      media: formData.media,
-      parent: formData.parent,
-      subCategories,
-    };
-    this.catServices.addCategories(category).subscribe((res) => {
+    // const formData = this.myForm.value;
+    // const subCategories = formData.subCategories?.map((category: any) => {
+    //   return {
+    //     name: category.name,
+    //     shortText: category.shortText,
+    //     longText: category.longText,
+    //     media: category.media,
+    //     parent: formData.name,
+    //     subCategories: category.subCategories,
+    //   };
+    // });
+    // const category = {
+    //   name: formData.name,
+    //   shortText: formData.shortText,
+    //   longText: formData.longText,
+    //   media: formData.media,
+    //   parent: formData.parent,
+    //   subCategories,
+    // };
+    this.catServices.addCategories(this.myForm.value).subscribe((res) => {
       this.categoryItems.push(res);
       this.loadCategories();
       console.log('Category added successfully!!');
