@@ -22,12 +22,12 @@ export class ApiService {
 
   }
 
-  onLogin(obj:any): Observable<any>{
+    onLogin(obj:any): Observable<any>{
     // const url = 'https://pim-nest.vercel.app/api/v1/auth/login';
     const endpoint = 'auth/login';
     const url = `${this.apiHost}${endpoint}`
     return this.http.post(url,obj);
-   }
+    }
 
    get isLoggedIn():boolean{
     const authToken = localStorage.getItem('access_token');
@@ -52,6 +52,10 @@ export class ApiService {
     if(!this.isLoggedIn && removeUser == null){
       this.router.navigate(['/login']);
     }
+
+    // Update the login status and user data observables
+    this.loginStatus$.next(false);
+    this.userData.next(null);
    }
 
    getUserInfo(): Observable<any>{
@@ -68,7 +72,7 @@ export class ApiService {
 
    get UserData$(){
     localStorage.getItem('user');
-    return this.userData;
+    return this.userData.asObservable();
    }
 
    doUserLogin(){
