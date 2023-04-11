@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category.service';
 
 export class subCategories{
@@ -12,14 +13,26 @@ export class subCategories{
   templateUrl: './recursive.component.html',
   styleUrls: ['./recursive.component.css']
 })
-export class RecursiveComponent {
+export class RecursiveComponent implements OnInit{
 
   @Input() subCategories!: subCategories[];
   categoryItems : any[] = [];
+  subCategoryForm!: FormGroup;
 
   constructor( private catServices: CategoryService){
 
 
+  }
+
+  ngOnInit(): void {
+    this.subCategoryForm= new FormGroup ({
+      name: new FormControl(''),
+      shortText: new FormControl(''),
+      longText: new FormControl(''),
+      media: new FormControl(['']),
+      parent: new FormControl(),
+      subCategories: new FormControl([''])
+  });
   }
 
 
@@ -37,5 +50,11 @@ export class RecursiveComponent {
         console.log('Error deleting category:', error);
       });
     // }
+  }
+
+
+
+  onSubCategoriesSubmit() {
+    // this.subCategoryItems = event.target.value;
   }
 }
