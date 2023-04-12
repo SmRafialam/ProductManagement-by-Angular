@@ -62,12 +62,11 @@ export class CategoriesComponent implements OnInit{
         parent: new FormControl(''),
         subCategories: new FormControl([])
     });
+
   }
 
 
-
   onSubmit() {
-
     this.catServices.addCategories(this.categoryForm.value).subscribe((res) => {
       this.categoryItems.push(res);
       this.loadCategories();
@@ -114,36 +113,36 @@ export class CategoriesComponent implements OnInit{
     // this.isModalVisible = false;
   }
 
-  onSubCategoriesSubmit(): void {
+  onSubCategoriesSubmit(catId: any): void {
     const subCategoryFormValue = this.subCategoryForm.value;
     const parentCategory = subCategoryFormValue.parent;
-
 
     // If a parent category is selected, add the new category as a subcategory
     if (parentCategory) {
       // Find the parent category in the categoryItems array
       const parentIndex = this.categoryItems.findIndex(category => category.id === parentCategory);
 
-        // Create subcategory form data
-        const subcategoryFormData = this.categoryForm.value;
+      // Create subcategory form data
+      const subcategoryFormData = this.subCategoryForm.value;
 
-        // Add the new subcategory
-        this.categoryItems[parentIndex].subCategories.push(subcategoryFormData);
-    } else if(!parentCategory) {
+      // Add the new subcategory
+      this.categoryItems[parentIndex].subCategories.push(subcategoryFormData);
+    } else {
       // If no parent category is selected, add the new category to the top level
+      subCategoryFormValue.parent = catId;
       this.catServices.addCategories(subCategoryFormValue).subscribe((res) => {
         this.subCategoryItems.push(res);
         this.loadCategories();
-        console.log('Category added successfully!!');
+        console.log('Subcategory added successfully!!');
       }, error => {
         console.error('There was an error:', error);
       });
     }
 
-
     // Reset the form
     this.subCategoryForm.reset();
   }
+
 
   hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;
   // hasParent = this.treeControl.getParent(node:any);

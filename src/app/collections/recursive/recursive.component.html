@@ -75,7 +75,7 @@
           </li>
         </ul>
       </div>
-    <form [formGroup]="subCategoryForm" (ngSubmit)="onSubCategoriesSubmit()" >
+    <form [formGroup]="subCategoryForm" (ngSubmit)="onSubCategoriesSubmit(subCategory.id)" >
       <div class="modal-body tab-content">
         <div class="tab-pane active" id="newSubCategory">
           <div class="form-group">
