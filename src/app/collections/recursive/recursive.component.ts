@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { CategoryService } from 'src/app/services/category.service';
 
 export class subCategories{
@@ -21,8 +22,11 @@ export class RecursiveComponent implements OnInit{
   subCategoryItems : any[] = [];
   selectedSubCategory: null | undefined;
   selectedCategory: any;
+  isModalVisible:boolean = true;
+  dataSource = new MatTreeNestedDataSource<any>();
 
-  constructor( private catServices: CategoryService){
+
+  constructor( private catServices: CategoryService,private changeDetectorRef: ChangeDetectorRef){
 
 
   }
@@ -60,10 +64,10 @@ export class RecursiveComponent implements OnInit{
 
   loadCategories(){
     this.catServices.getCategories().subscribe((data:any)=>{
-      console.log(data.result);
+     // console.log(data.result);
       //this.categoryItems = data.result;
       this.categoryItems = this.CategoryData(data.result);
-      console.log(this.categoryItems);
+     // console.log(this.categoryItems);
     })
   }
 
@@ -99,6 +103,14 @@ export class RecursiveComponent implements OnInit{
 
         // Add the new subcategory to the parent category
         parentCategoryObj.subCategories.push(subcategoryFormData);
+
+        // // Reset the form
+        // this.subCategoryForm.reset();
+        // this.isModalVisible = false;
+
+        // Trigger change detection to update the view
+        this.changeDetectorRef.detectChanges();
+
       } else {
         console.log(`Parent category with ID ${parentCategory} not found.`);
       }
@@ -109,10 +121,20 @@ export class RecursiveComponent implements OnInit{
         this.subCategoryItems.push(res);
         this.loadCategories();
         console.log('Subcategory added successfully!!');
+
+        // Reset the form
+        this.subCategoryForm.reset();
+        this.isModalVisible = false;
+
+        // Trigger change detection to update the view
+        this.changeDetectorRef.detectChanges();
+
+
       }, error => {
         console.error('There was an error:', error);
       });
     }
+
   }
 
   // Recursive function to find a category by ID in a nested category hierarchy

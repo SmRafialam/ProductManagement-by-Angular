@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -33,7 +33,7 @@ export class CategoriesComponent implements OnInit{
   subCategoryForm!: FormGroup;
   parentId!: string;
 
-  constructor(private http: HttpClient,private accountService: ApiService, private catServices: CategoryService, private formBuilder: FormBuilder){
+  constructor(private catServices: CategoryService,private changeDetectorRef: ChangeDetectorRef){
 
 
   }
@@ -127,20 +127,38 @@ export class CategoriesComponent implements OnInit{
 
       // Add the new subcategory
       this.categoryItems[parentIndex].subCategories.push(subcategoryFormData);
+
+      // Reset the form
+      this.subCategoryForm.reset();
+      this.isModalVisible = false;
+
+      // Trigger change detection to update the view
+      this.changeDetectorRef.detectChanges();
+
+      this.loadCategories();
+
+
     } else {
       // If no parent category is selected, add the new category to the top level
       subCategoryFormValue.parent = catId;
       this.catServices.addCategories(subCategoryFormValue).subscribe((res) => {
-        this.subCategoryItems.push(res);
-        this.loadCategories();
+
+        this.subCategoryItems.push(res);// Reset the form
+    this.subCategoryForm.reset();
+    this.isModalVisible = false;
         console.log('Subcategory added successfully!!');
+        this.loadCategories();
+
+        // Trigger change detection to update the view
+        this.changeDetectorRef.detectChanges();
       }, error => {
         console.error('There was an error:', error);
       });
     }
 
-    // Reset the form
-    this.subCategoryForm.reset();
+
+
+
   }
 
 
