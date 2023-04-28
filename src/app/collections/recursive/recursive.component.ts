@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { CategoryService } from 'src/app/services/category.service';
@@ -15,6 +15,8 @@ export class subCategories{
   styleUrls: ['./recursive.component.css']
 })
 export class RecursiveComponent implements OnInit{
+  @Output() subCategoriesChange = new EventEmitter<any[]>();
+
 
   @Input() subCategories!: subCategories[];
   categoryItems : any[] = [];
@@ -43,11 +45,11 @@ export class RecursiveComponent implements OnInit{
       parent: new FormControl(''),
       subCategories: new FormControl([])
   });
+
   }
 
 
   onDelete(catId: any) {
-
     // const confirmation = confirm(`Are you sure you want to delete id: ${catId}?`);
     // if (confirmation) {
       this.catServices.deleteCategory(catId).subscribe(data => {
@@ -83,74 +85,92 @@ export class RecursiveComponent implements OnInit{
           acc.push(currentCategory)
       }
 
-      return acc;
-
+    return acc;
     },[])
   }
 
   onSubCategoriesSubmit(catId: any) {
     const subCategoryFormValue = this.subCategoryForm.value;
-    const parentCategory = subCategoryFormValue.parent;
 
     // If a parent category is selected, add the new category as a subcategory
-    if (parentCategory) {
-      // Find the parent category in the categoryItems array
-      const parentCategoryObj = this.findCategoryById(this.categoryItems, parentCategory);
+    if (subCategoryFormValue.parent) {
+      // Find the parent category in the subCategoryItems array
+      const parentCategory = this.subCategoryItems.find(
+        (item) => item.id === subCategoryFormValue.parent
+      );
 
-      if (parentCategoryObj) {
+      if (parentCategory) {
         // Create subcategory form data
         const subcategoryFormData = this.subCategoryForm.value;
 
         // Add the new subcategory to the parent category
-        parentCategoryObj.subCategories.push(subcategoryFormData);
+        this.catServices.addCategories(subcategoryFormData).subscribe(
+          (res) => {
+            console.log(res);
+            parentCategory.subCategories.push(res.result);
+            // this.subCategories = [...this.subCategories];
 
-        // // Reset the form
-        // this.subCategoryForm.reset();
-        // this.isModalVisible = false;
+            // Step 2: Emit updated subCategories array
+            this.subCategoriesChange.emit(this.subCategories);
 
-        // Trigger change detection to update the view
-        this.changeDetectorRef.detectChanges();
+            // Reset the form
+            this.subCategoryForm.reset();
+            this.isModalVisible = false;
 
+            // Update the view
+            this.updateSubCategories();
+          },
+          (error) => {
+            console.error('There was an error:', error);
+          }
+        );
       } else {
-        console.log(`Parent category with ID ${parentCategory} not found.`);
+        console.log(`Parent category with ID ${subCategoryFormValue.parent} not found.`);
       }
     } else {
       // If no parent category is selected, add the new category to the top level
       subCategoryFormValue.parent = catId;
-      this.catServices.addCategories(subCategoryFormValue).subscribe((res) => {
-        this.subCategoryItems.push(res);
-        this.loadCategories();
-        console.log('Subcategory added successfully!!');
+      this.catServices.addCategories(subCategoryFormValue).subscribe(
+        (res) => {
+          console.log(res);
+          this.subCategoryItems.push(res.result);
+          console.log('Subcategory added successfully!!');
+          this.loadCategories();
 
-        // Reset the form
-        this.subCategoryForm.reset();
-        this.isModalVisible = false;
+          // Reset the form
+          this.subCategoryForm.reset();
+          this.isModalVisible = false;
 
-        // Trigger change detection to update the view
-        this.changeDetectorRef.detectChanges();
-
-
-      }, error => {
-        console.error('There was an error:', error);
-      });
+          // Update the view
+          this.updateSubCategories();
+        },
+        (error) => {
+          console.error('There was an error:', error);
+        }
+      );
     }
-
   }
 
-  // Recursive function to find a category by ID in a nested category hierarchy
-  findCategoryById(categories: any[], categoryId: string): any {
-    for (const category of categories) {
-      if (category.id === categoryId) {
-        return category;
-      } else if (category.subCategories.length > 0) {
-        const foundCategory = this.findCategoryById(category.subCategories, categoryId);
-        if (foundCategory) {
-          return foundCategory;
-        }
-      }
-    }
 
-    return null;
+  // Recursive function to find a category by ID in a nested category hierarchy
+  // findCategoryById(categories: any[], category Id: string): any {
+  //   for (const category of categories) {
+  //     if (category.id === categoryId) {
+  //       return category;
+  //     } else if (category.subCategories.length > 0) {
+  //       const foundCategory = this.findCategoryById(category.subCategories, categoryId);
+  //       if (foundCategory) {
+  //         return foundCategory;
+  //       }
+  //     }
+  //   }
+
+  //   return null;
+  // }
+
+  updateSubCategories() {
+    this.dataSource.data = this.categoryItems;
+    this.changeDetectorRef.detectChanges();
   }
 
 

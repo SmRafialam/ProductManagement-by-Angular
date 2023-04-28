@@ -142,10 +142,10 @@ export class CategoriesComponent implements OnInit{
       // If no parent category is selected, add the new category to the top level
       subCategoryFormValue.parent = catId;
       this.catServices.addCategories(subCategoryFormValue).subscribe((res) => {
-
-        this.subCategoryItems.push(res);// Reset the form
-    this.subCategoryForm.reset();
-    this.isModalVisible = false;
+        console.log(res.result);
+        this.subCategoryItems.push(res.result);// Reset the form
+        this.subCategoryForm.reset();
+        this.isModalVisible = false;
         console.log('Subcategory added successfully!!');
         this.loadCategories();
 
@@ -230,8 +230,8 @@ export class CategoriesComponent implements OnInit{
 
 getData(){
     this.catServices.getCategories().subscribe((categories: any) => {
-    this.dataSource.data = categories;
-    console.log(categories);
+    this.dataSource.data = categories.result;
+    console.log(categories.result);
   });
 }
 
