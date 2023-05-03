@@ -30,7 +30,7 @@ export class AppComponent implements OnInit{
     // this.userData$ = this.accountService.currentUser$;
 
     this.accountService.currentUser$.subscribe((userData) => {
-      console.log(userData);
+      //console.log(userData);
       if (userData === null) {
         // User is not logged in
         this.isLoggedIn = false;

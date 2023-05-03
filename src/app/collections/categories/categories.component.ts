@@ -42,7 +42,7 @@ export class CategoriesComponent implements OnInit{
     //this.loadScripts();
     this.loadCategories();
     //this.dataSource.data = this.categoryItems;
-    this.getData();
+    //this.getData();
 
 
     this.categoryForm = new FormGroup({
@@ -68,6 +68,7 @@ export class CategoriesComponent implements OnInit{
 
   onSubmit() {
     this.catServices.addCategories(this.categoryForm.value).subscribe((res) => {
+      console.log(res);
       this.categoryItems.push(res);
       this.loadCategories();
       console.log('Category added successfully!!');
@@ -75,43 +76,8 @@ export class CategoriesComponent implements OnInit{
       console.error('There was an error:', error);
     });
     this.isModalVisible = false;
-
-    // const formData = this.categoryForm.value;
-
-    // // Replace null values with empty string values in the formData object
-    // Object.keys(formData).forEach(key => {
-    //   if (formData[key] === null) {
-    //     formData[key] = '';
-    //   }
-    // });
-
-    // const parentCategory = formData.parent;
-
-    // // If a parent category is selected, add the new category as a subcategory
-    // if (parentCategory) {
-    //   // Find the parent category in the categoryItems array
-    //   const parentIndex = this.categoryItems.findIndex(category => category.id === parentCategory);
-
-    //     // Create subcategory form data
-    //     const subcategoryFormData = this.createSubCategoryForm(parentCategory).value;
-
-    //     // Add the new subcategory
-    //     this.categoryItems[parentIndex].subCategories.push(subcategoryFormData);
-    // } else if(!parentCategory) {
-    //   // If no parent category is selected, add the new category to the top level
-    //   this.catServices.addCategories(formData).subscribe((res) => {
-    //     this.categoryItems.push(res);
-    //     this.loadCategories();
-    //     console.log('Category added successfully!!');
-    //   }, error => {
-    //     console.error('There was an error:', error);
-    //   });
-    // }
-
-    // // Reset the form
-    // this.categoryForm.reset();
-    // this.isModalVisible = false;
   }
+
 
   onSubCategoriesSubmit(catId: any): void {
     const subCategoryFormValue = this.subCategoryForm.value;
@@ -137,7 +103,6 @@ export class CategoriesComponent implements OnInit{
 
       this.loadCategories();
 
-
     } else {
       // If no parent category is selected, add the new category to the top level
       subCategoryFormValue.parent = catId;
@@ -155,10 +120,6 @@ export class CategoriesComponent implements OnInit{
         console.error('There was an error:', error);
       });
     }
-
-
-
-
   }
 
 
@@ -173,32 +134,6 @@ export class CategoriesComponent implements OnInit{
       this.categoryItems = this.CategoryData(data.result);
       console.log(this.categoryItems);
     })
-
-    // this.catServices.getCategories().subscribe((data:any)=>{
-    //   console.log(data.result);
-    //   // Create a flat list of categories with parent information
-    //   const flatList = data.result.map((category:any) => {
-    //     return {
-    //       ...category,
-    //       parent: category.parent || null
-    //     }
-    //   });
-
-    //   // Use a recursive function to create a nested tree structure based on subcategories
-    //   const createTree = (categories:any, parent:any) => {
-    //     return categories.filter((category:any) => category.parent === parent)
-    //                     .map((category:any) => {
-    //                       return {
-    //                         ...category,
-    //                         subCategories: createTree(categories, category.id)
-    //                       }
-    //                     });
-    //   }
-
-    //   this.categoryItems = createTree(flatList, null);
-
-    //   console.log(this.categoryItems);
-    // })
   }
 
   private loadScripts() {
@@ -207,7 +142,6 @@ export class CategoriesComponent implements OnInit{
       console.log("expand")
       $(".pruvit-cms").toggleClass("expandSideMenu");
     });
-
   }
 
  CategoryData(data:any,parent=null){
@@ -249,28 +183,6 @@ onDelete(catId: any) {
     });
   // }
 }
-
-// openDeleteModal() {
-
-//   const dialogRef = this.dialog.open(DeleteModalComponent);
-
-//   dialogRef.afterClosed().subscribe(result => {
-//     // Handle the modal result if needed
-//     console.log(result);
-//   });
-// }
-
-
-// confirmDelete() {
-//   const dialogRef = this.dialog.open(DeleteModalComponent);
-
-//   dialogRef.afterClosed().subscribe((result) => {
-//     if (result === true) {
-//       // Perform delete operation
-//       console.log('Item deleted');
-//     }
-//   });
-// }
 
  }
 

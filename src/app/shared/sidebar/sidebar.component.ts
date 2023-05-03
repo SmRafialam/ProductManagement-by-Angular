@@ -41,7 +41,7 @@ export class SidebarComponent implements OnInit{
 
   loadUsers(){
     this.accountService.UserData$.subscribe((data:any)=>{
-    console.log(data);
+    //console.log(data);
     const localUSer = localStorage.getItem('user');
     //console.log(localData);
     if(localUSer!= null){
