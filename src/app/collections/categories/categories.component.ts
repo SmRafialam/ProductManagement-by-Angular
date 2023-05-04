@@ -33,6 +33,7 @@ export class CategoriesComponent implements OnInit{
   subCategoryForm!: FormGroup;
   parentId!: string;
 
+
   constructor(private catServices: CategoryService,private changeDetectorRef: ChangeDetectorRef){
 
 
@@ -62,6 +63,7 @@ export class CategoriesComponent implements OnInit{
         parent: new FormControl(''),
         subCategories: new FormControl([])
     });
+
 
   }
 
@@ -120,6 +122,10 @@ export class CategoriesComponent implements OnInit{
         console.error('There was an error:', error);
       });
     }
+  }
+
+  onEditCategoriesSubmit(catId: any){
+
   }
 
 
