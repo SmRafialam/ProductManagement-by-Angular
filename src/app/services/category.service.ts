@@ -37,8 +37,17 @@ export class CategoryService {
   });
   }
 
-  deleteCategory(id:string) :Observable<any>{
+  editCategories(id:string) :Observable<any>{
+    const endpoint = 'collections/category/';
+    const url = `${this.apiHost}${endpoint}`+id;
+    return this.http.patch(url,{
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  });
+  }
 
+  deleteCategory(id:string) :Observable<any>{
     const endpoint = 'collections/category/';
     const url = `${this.apiHost}${endpoint}`+id;
     return this.http.delete(url,{

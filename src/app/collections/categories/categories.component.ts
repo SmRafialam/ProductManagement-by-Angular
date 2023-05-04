@@ -81,6 +81,9 @@ export class CategoriesComponent implements OnInit{
   }
 
 
+
+
+
   onSubCategoriesSubmit(catId: any): void {
     const subCategoryFormValue = this.subCategoryForm.value;
     const parentCategory = subCategoryFormValue.parent;
@@ -124,9 +127,29 @@ export class CategoriesComponent implements OnInit{
     }
   }
 
-  onEditCategoriesSubmit(catId: any){
+  onEditClick(catId: any) {
+    const currentCategories = this.categoryItems.find((c)=>{return c.id === catId});
+    console.log(currentCategories)
+
+    this.subCategoryForm.setValue({
+      name: currentCategories.name,
+      shortText: currentCategories.shortText,
+      longText: currentCategories.longText,
+      media: currentCategories.media,
+      parent: currentCategories.parent,
+      subCategories: currentCategories.subCategories
+    })
+
+    // this.catServices.editCategories(catId).subscribe((data)=>{
+    //   console.log(data);
+    // })
 
   }
+
+  onEditCategoriesSubmit(categories:any){
+    this.catServices.editCategories(categories);
+  }
+
 
 
   hasChild = (_: number, node: any) => !!node.subCategories && node.subCategories.length > 0;
