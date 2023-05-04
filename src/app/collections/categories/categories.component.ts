@@ -32,7 +32,7 @@ export class CategoriesComponent implements OnInit{
   categoryForm!: FormGroup;
   subCategoryForm!: FormGroup;
   parentId!: string;
-
+  currentCategoryId!:string;
 
   constructor(private catServices: CategoryService,private changeDetectorRef: ChangeDetectorRef){
 
@@ -128,6 +128,7 @@ export class CategoriesComponent implements OnInit{
   }
 
   onEditClick(catId: any) {
+    this.currentCategoryId = catId;
     const currentCategories = this.categoryItems.find((c)=>{return c.id === catId});
     console.log(currentCategories)
 
@@ -146,8 +147,19 @@ export class CategoriesComponent implements OnInit{
 
   }
 
-  onEditCategoriesSubmit(categories:any){
-    this.catServices.editCategories(categories);
+  onCategoriesCreate(CategoryData:any){
+    this.catServices.editCategories(this.currentCategoryId,CategoryData).subscribe((data)=>{
+      console.log(data,"Category successfully updated!");
+
+      this.subCategoryItems.push(data);
+      this.loadCategories();
+      // Reset the form
+      this.subCategoryForm.reset();
+      this.isModalVisible = false;
+
+      // Trigger change detection to update the view
+      this.changeDetectorRef.detectChanges();
+    })
   }
 
 

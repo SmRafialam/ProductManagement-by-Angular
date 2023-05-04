@@ -402,7 +402,7 @@
           </li>
         </ul>
       </div>
-    <form [formGroup]="subCategoryForm" (ngSubmit)="onEditCategoriesSubmit(cat.id)" >
+    <form [formGroup]="subCategoryForm" (ngSubmit)="onCategoriesCreate(subCategoryForm.value)" >
       <div class="modal-body tab-content">
         <div class="tab-pane active" id="newSubCategory">
           <div class="form-group">

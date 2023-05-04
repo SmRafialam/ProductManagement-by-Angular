@@ -37,10 +37,10 @@ export class CategoryService {
   });
   }
 
-  editCategories(id:string) :Observable<any>{
+  editCategories(id:string,value:any){
     const endpoint = 'collections/category/';
     const url = `${this.apiHost}${endpoint}`+id;
-    return this.http.patch(url,{
+    return this.http.patch(url,value,{
       headers: new HttpHeaders({
       'Content-Type':  'application/json',
     })
