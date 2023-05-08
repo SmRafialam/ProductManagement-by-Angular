@@ -16,7 +16,7 @@
                 <i class="fal fa-ellipsis-v"></i>
               </span>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" [attr.data-target]="'#editSubCategoryModal'+subCategory.id" data-toggle="modal">Edit</a>
+                <a class="dropdown-item" href="#" [attr.data-target]="'#editSubCategoryModal'+subCategory.id" data-toggle="modal" (click)="onEditClick(subCategory.id)">Edit</a>
                 <a class="dropdown-item" href="#" [attr.data-target]="'#deleteModal'+subCategory.id" data-toggle="modal">Delete</a>
               </div>
             </div>
@@ -40,7 +40,7 @@
           <i class="fal fa-ellipsis-v"></i>
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#" [attr.data-target]="'#editSubCategoryModal'+subCategory.id" data-toggle="modal">Edit</a>
+          <a class="dropdown-item" href="#" [attr.data-target]="'#editSubCategoryModal'+subCategory.id" data-toggle="modal" (click)="onEditClick(subCategory.id)">Edit</a>
           <a class="dropdown-item" href="#" [attr.data-target]="'#deleteModal'+subCategory.id" data-toggle="modal">Delete</a>
         </div>
       </div>
@@ -204,7 +204,7 @@
           </li>
         </ul>
       </div>
-    <form [formGroup]="subCategoryForm" (ngSubmit)="onSubCategoriesSubmit(subCategory.id)" >
+    <form [formGroup]="subCategoryForm" (ngSubmit)="onCategoriesCreate(subCategoryForm.value)" >
       <div class="modal-body tab-content">
         <div class="tab-pane active" id="newSubCategory">
           <div class="form-group">
@@ -273,7 +273,6 @@
             </div>
 
             <div class="expander-inner form-group">
-
                 <div  aria-labelledby="headingSubcategories" data-parent="#accordionExample">
                   <h5 _ngcontent-tar-c56="" class="brand-secondary pt-3 mb-3 font-weight-bold">Subcategories</h5>
                   <p class="p-extra-small gray-darker mb-2">Enter subcategories separated by a line break. Use TAB
