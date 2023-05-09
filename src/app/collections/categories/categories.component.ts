@@ -45,7 +45,6 @@ export class CategoriesComponent implements OnInit{
     //this.dataSource.data = this.categoryItems;
     //this.getData();
 
-
     this.categoryForm = new FormGroup({
         name: new FormControl(''),
         shortText: new FormControl(''),
@@ -71,7 +70,7 @@ export class CategoriesComponent implements OnInit{
   onSubmit() {
     this.catServices.addCategories(this.categoryForm.value).subscribe((res) => {
       console.log(res);
-      this.categoryItems.push(res);
+      this.categoryItems.push(res.result);
       this.loadCategories();
       console.log('Category added successfully!!');
     }, error => {
@@ -79,9 +78,6 @@ export class CategoriesComponent implements OnInit{
     });
     this.isModalVisible = false;
   }
-
-
-
 
 
   onSubCategoriesSubmit(catId: any): void {
@@ -147,7 +143,7 @@ export class CategoriesComponent implements OnInit{
     this.catServices.editCategories(this.currentCategoryId,CategoryData).subscribe((data:any)=>{
       console.log(data,"Category successfully updated!");
 
-      this.subCategoryItems.push(data.result[0]);
+      this.subCategoryItems.push(data.result);
 
       // data.result[0].subCategories = [];
       // this.categoryItems[currentSubCategoriesIndex].subCategories.push(data.result[0]);// Reset the form

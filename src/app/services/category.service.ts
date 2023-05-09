@@ -27,6 +27,16 @@ export class CategoryService {
      return this.http.get(url);
   }
 
+  addAttributes(data:any): Observable<any>{
+    const endpoint = 'collections/attribute';
+     const url = `${this.apiHost}${endpoint}`;
+     return this.http.post(url,data,{
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  });
+  }
+
   addCategories(data:any): Observable<any>{
     const endpoint = 'collections/category';
      const url = `${this.apiHost}${endpoint}`;

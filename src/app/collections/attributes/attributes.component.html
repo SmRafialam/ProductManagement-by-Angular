@@ -82,7 +82,6 @@
                 <!-- END of cms-body-inner-content -->
 
 
-
                 <div class="alert-wrap">
                   <div class="alert category-create">
                     <div class="alert-message p-small">
@@ -102,7 +101,7 @@
       </aside>
       <!-- END of cms-body -->
 
-      <button type="button" class="btn btn-add cms-add-btn add-attribute"></button>
+      <button type="button" class="btn btn-add cms-add-btn add-attribute" data-target="#addAttributeModal" data-toggle="modal"></button>
       <!-- END of cms-add-btn -->
 
       <div class="hide-search hidden"></div>
@@ -118,7 +117,7 @@
       <!-- END of search-input -->
     <!-- END of pruvit-cms -->
 
-    <div id="addAttributesModal" class="modal fade right add-attributes-modal" tabindex="-1">
+    <div id="addAttributeModal" class="modal fade right add-attributes-modal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header left-icon">
@@ -128,102 +127,53 @@
             <p class="p-bold ltr-spacing4">New attribute</p>
           </div>
 
-          <div class="modal-body">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Flavor" value="Flavor" />
+          <form [formGroup]="attributeForm" (ngSubmit)="onSubmitAttribute()">
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" placeholder="Add attribute name" />
+              </div>
+
+              <div class="form-group form-check form-switch">
+                <input class="form-check-input form-control" type="checkbox" formControlName="skuEnabled" />
+
+                <label class="form-check-label form-control">
+                  Enable SKU suffixes to this attribute choices
+                  <a href="#" data-toggle="tooltip" title="Some tooltip text!">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M8.00065 10.6668V8.00016M8.00065 5.3335H8.00732M14.6673 8.00016C14.6673 11.6821 11.6826 14.6668 8.00065 14.6668C4.31875 14.6668 1.33398 11.6821 1.33398 8.00016C1.33398 4.31826 4.31875 1.3335 8.00065 1.3335C11.6826 1.3335 14.6673 4.31826 14.6673 8.00016Z"
+                        stroke="black"
+                        stroke-opacity="0.94"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </label>
+              </div>
+
+              <h5 class="p-bold ltr-spacing4 d-flex">
+                Choices <a href="#" class="p-medium-bold ml-auto import-csv"><i class="fal fa-file"></i> Import from CSV</a>
+              </h5>
+
+              <p class="p-extra-small">Enter choices separated by the line break using this format: Choice, (comma) SKU suffix.</p>
+              <p class="p-extra-small">You can add or edit choices after the attribute is created.</p>
+
+              <textarea class="form-control p-small" rows="15" formControlName="choices"></textarea>
             </div>
 
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" />
-              <label class="form-check-label">
-                Enable SKU suffixes to this attrubute choices
-                <a href="#" data-toggle="tooltip" title="Some tooltip text!">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M8.00065 10.6668V8.00016M8.00065 5.3335H8.00732M14.6673 8.00016C14.6673 11.6821 11.6826 14.6668 8.00065 14.6668C4.31875 14.6668 1.33398 11.6821 1.33398 8.00016C1.33398 4.31826 4.31875 1.3335 8.00065 1.3335C11.6826 1.3335 14.6673 4.31826 14.6673 8.00016Z"
-                      stroke="black"
-                      stroke-opacity="0.94"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
-              </label>
-            </div>
-
-            <h5 class="p-bold ltr-spacing4 d-flex">
-              Choices <a href="#" class="p-medium-bold ml-auto import-csv"><i class="fal fa-file"></i> Import from CSV</a>
-            </h5>
-
-            <p class="p-extra-small">Enter choices separated by the line break using this format: Choice, (comma) SKU suffix.</p>
-            <p class="p-extra-small">You can add or edit choices after the attribute is created.</p>
-
-            <textarea class="form-control p-small" rows="15">
-              Banana Cream
-              Big Apple
-              Birthday Cake
-              Blackberry Pineapple
-              Blue Ocean
-              Blue Razz
-              Blueberry Acai
-              Blueberry Muffin
-              Caramel Macchiato
-              Cherry Lightning
-              Chocolate Swirl
-              Citrus Variety Pack (3 flavors)
-              Cocktail
-              Colada Bliss
-              Dark Cherry
-              Dark Chocolate
-              Eclipse
-              Fig Roll Up
-              French Onion
-              Harvest Sunrise
-              Heart Tart
-              Keto Thyme
-              Latte Nut
-              Lime Time
-              Mango Tango
-              Maui Punch
-              Melon Blast
-              Oh Mai Tai
-              Orange Dream
-              Orange Vanilla
-              Poppin Pear Apple
-              Raspberry Lemonade
-              Roasted Marshmallo
-              Roasted Marshmallow
-              Roasted Marshmallow Toon
-              Root Bear Float
-              Ruby Rush
-              Salted Caramel
-              Splash
-              Strawberry Peach
-              Sunshine
-              Sweet Kreme
-              Swiss Cacao
-              The Original
-              Toucan Tango
-              Trü Passion
-              Unicorn Slam
-              Vanilla Bean
-              Vanilla Ski
-              Variety Pack
-          </textarea
-            >
-          </div>
-
-          <div class="modal-footer">
-            <div class="bottom-bar">
-              <div class="bottom-bar-left">
-                <a href="#" class="btn btn-brand">Save</a>
-                <a href="#" class="btn btn-gray">Cancel</a>
+            <div class="modal-footer">
+              <div class="bottom-bar">
+                <div class="bottom-bar-left">
+                  <button class="btn btn-brand" type="submit">Save</button>
+                  <button class="btn btn-gray" data-dismiss="modal" >Cancel</button>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
-      </div>
-    </div>
+
+
     <!-- END of add-attributes-modal -->
 
     <div id="newColorModal" class="modal fade right add-attributes-modal" tabindex="-1">
@@ -250,8 +200,8 @@
           <div class="modal-footer">
             <div class="bottom-bar">
               <div class="bottom-bar-left">
-                <a href="#" class="btn btn-brand">Save</a>
-                <a href="#" class="btn btn-gray">Cancel</a>
+                <a class="btn btn-brand" type="submit">Save</a>
+                <a class="btn btn-gray" data-dismiss="modal" >Cancel</a>
               </div>
             </div>
           </div>

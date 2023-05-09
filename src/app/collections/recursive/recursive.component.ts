@@ -97,7 +97,6 @@ export class RecursiveComponent implements OnInit{
 
       // Trigger change detection to update the view
       this.changeDetectorRef.detectChanges();
-
     })
   }
 
