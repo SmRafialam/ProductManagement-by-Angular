@@ -56,38 +56,40 @@ export class RecursiveComponent implements OnInit{
   }
 
   onEditClick(catId: any) {
-    //console.log(catId);
     this.currentCategoryId = catId;
     const currentSubCategories = this.subCategories.find((c)=>{return c.id === catId});
-    console.log(currentSubCategories)
     if (currentSubCategories) {
       this.subCategoryForm.setValue({
-          name: currentSubCategories.name,
-          shortText: currentSubCategories.shortText,
-          longText: currentSubCategories.longText,
-          media: currentSubCategories.media,
-          parent: currentSubCategories.parent,
-          subCategories: currentSubCategories.subCategories
+        name: currentSubCategories.name,
+        shortText: currentSubCategories.shortText,
+        longText: currentSubCategories.longText,
+        media: currentSubCategories.media,
+        parent: currentSubCategories.parent,
+        subCategories: currentSubCategories.subCategories
       });
-  } else {
+      // Set the selected category
+      this.selectedCategory = currentSubCategories;
+      // Set the selected subcategory to the first subcategory in the list
+      this.selectedSubCategory = currentSubCategories.subCategories[0];
+    } else {
       console.log(`Subcategory with id ${catId} not found`);
+    }
   }
 
-  }
 
   onCategoriesCreate(CategoryData:any){
     const currentSubCategoriesIndex = this.subCategories.findIndex((c) => c.id === this.currentCategoryId);
+    //console.log(currentSubCategoriesIndex);
 
     this.catServices.editCategories(this.currentCategoryId,CategoryData).subscribe((data:any)=>{
       console.log(data.result,"Subategory successfully updated!");
 
       this.subCategories.push(data.result);
 
-      data.result[0].subCategories = [];
-      this.subCategories[currentSubCategoriesIndex].subCategories.push(data.result[0]);// Reset the form
-
-      // Emit the updated subCategories array
-      // this.subCategoriesChange.emit(this.subCategoryItems);
+      if (currentSubCategoriesIndex !== -1) {
+        this.subCategories[currentSubCategoriesIndex] = CategoryData;
+        this.subCategoriesChange.emit(this.subCategories);
+      }
 
       // Reset the form
       this.subCategoryForm.reset();
@@ -95,6 +97,7 @@ export class RecursiveComponent implements OnInit{
 
       // Trigger change detection to update the view
       this.changeDetectorRef.detectChanges();
+
     })
   }
 
@@ -163,7 +166,6 @@ export class RecursiveComponent implements OnInit{
       }, error => {
         console.error('There was an error:', error);
       });
-
   }
 
 }

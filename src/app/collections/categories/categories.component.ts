@@ -140,19 +140,19 @@ export class CategoriesComponent implements OnInit{
       parent: currentCategories.parent,
       subCategories: currentCategories.subCategories
     })
-
   }
 
   onCategoriesCreate(CategoryData:any){
-    const currentSubCategoriesIndex = this.categoryItems.findIndex((c) => c.id === this.currentCategoryId);
 
     this.catServices.editCategories(this.currentCategoryId,CategoryData).subscribe((data:any)=>{
       console.log(data,"Category successfully updated!");
 
-      this.subCategoryItems.push(data.result);
+      this.subCategoryItems.push(data.result[0]);
+
+      // data.result[0].subCategories = [];
+      // this.categoryItems[currentSubCategoriesIndex].subCategories.push(data.result[0]);// Reset the form
 
       this.loadCategories();
-
       // Reset the form
       this.subCategoryForm.reset();
       this.isModalVisible = false;

@@ -47,6 +47,16 @@ export class CategoryService {
   });
   }
 
+  editSubCategory(categoryId:string, subCategoryId:string, value:any){
+    const endpoint = 'collections/category/' + categoryId + '/subcategories/' + subCategoryId;
+    const url = `${this.apiHost}${endpoint}`;
+    return this.http.patch(url,value,{
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  });
+  }
+
   deleteCategory(id:string) :Observable<any>{
     const endpoint = 'collections/category/';
     const url = `${this.apiHost}${endpoint}`+id;
