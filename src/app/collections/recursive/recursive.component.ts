@@ -77,18 +77,22 @@ export class RecursiveComponent implements OnInit{
   }
 
 
-  onCategoriesCreate(CategoryData:any){
+  onCategoriesUpdate(CategoryData:any){
+    console.log(CategoryData);
     const currentSubCategoriesIndex = this.subCategories.findIndex((c) => c.id === this.currentCategoryId);
-    //console.log(currentSubCategoriesIndex);
+    console.log(currentSubCategoriesIndex);
 
     this.catServices.editCategories(this.currentCategoryId,CategoryData).subscribe((data:any)=>{
       console.log(data.result,"Subategory successfully updated!");
 
-      this.subCategories.push(data.result);
+     data.result[0].subCategories = CategoryData.subCategories;
+     //this.subCategories.push(data.result[0]);
+
+     // this.subCategories[currentSubCategoriesIndex].subCategories.push(CategoryData)
 
       if (currentSubCategoriesIndex !== -1) {
-        this.subCategories[currentSubCategoriesIndex] = CategoryData;
-        this.subCategoriesChange.emit(this.subCategories);
+        this.subCategories[currentSubCategoriesIndex] = data.result[0];
+        // this.subCategoriesChange.emit(this.subCategories);
       }
 
       // Reset the form
@@ -96,7 +100,7 @@ export class RecursiveComponent implements OnInit{
       this.isModalVisible = false;
 
       // Trigger change detection to update the view
-      this.changeDetectorRef.detectChanges();
+      // this.changeDetectorRef.detectChanges();
     })
   }
 
